@@ -109,7 +109,7 @@ const adobeInit = () => {
   const analytics = new oneDS.ApplicationInsights();
   var config = {
     instrumentationKey:
-      "41c1099574f14f06bdce4f80fcd0a65c-4a29467c-f5d4-4151-8e8b-62c0a3515947-7118",
+      "08243c72936e46a593d47b154e6c427a-3daf9d0a-e9eb-4525-90de-c6d9c47e6a87-7011",
     propertyConfiguration: {
       // Properties Plugin configuration
       callback: {
