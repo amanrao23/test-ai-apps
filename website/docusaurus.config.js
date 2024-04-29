@@ -17,15 +17,15 @@ const config = {
   },
 
   // CONFIG: Landing Pages uses this (also globally via siteConfig)
-  title: "Awesome Azure Developer CLI",
+  title: "AI Apps",
   tagline: "Discover - Create - Contribute",
 
   // CONIFIG: Used for GitHub Pages
   url: "https://azure.github.io",
-  baseUrl: "/awesome-azd/",
+  baseUrl: "/ai-apps/",
   favicon: "img/favicon.ico",
   organizationName: "azure",
-  projectName: "awesome-azd",
+  projectName: "ai-apps",
   deploymentBranch: "gh-pages",
 
   // CONFIG: Early detection for site health
@@ -70,9 +70,9 @@ const config = {
       // CONFIG: navbar logo, items, style, stickiness
       //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
       navbar: {
-        title: "awesome-azd",
+        title: "ai-apps",
         logo: {
-          alt: "Awesome Azd logo",
+          alt: "AI Apps logo",
           src: "img/logo.png",
           href: "/",
           target: "_self",
@@ -104,7 +104,7 @@ const config = {
 
           // right
           {
-            href: "https://github.com/Azure/awesome-azd",
+            href: "https://github.com/Azure/ai-apps",
             position: "right",
             className: "header-github-link",
             "aria-label": "GitHub repository",
@@ -113,7 +113,7 @@ const config = {
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://azure.github.io/awesome-azd/docs/intro",
+            to: "https://azure.github.io/ai-apps/docs/intro",
             label: "Submit your template!",
             position: "right",
             className: "button",

@@ -75,11 +75,11 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
               Want to be the change you wish to see in the world?
             </Text>
             <Text size={300}>
-              awesome-azd is always looking for new templates!
+              ai-apps is always looking for new templates!
             </Text>
             <FluentUILink
               key="emptySearch_contributeTemplate"
-              href="https://azure.github.io/awesome-azd/docs/intro"
+              href="https://azure.github.io/ai-apps/docs/intro"
               target="_blank"
               className={styles.colorLink}
             >
@@ -87,7 +87,7 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
             </FluentUILink>
             <FluentUILink
               key="emptySearch_requestBoard"
-              href="https://github.com/Azure/awesome-azd/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
+              href="https://github.com/Azure/ai-apps/issues/new?assignees=nigkulintya%2C+savannahostrowski&labels=requested-contribution&template=%F0%9F%A4%94-submit-a-template-request.md&title=%5BIdea%5D+%3Cyour-template-name%3E"
               target="_blank"
               className={styles.colorLink}
             >

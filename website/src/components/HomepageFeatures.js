@@ -19,7 +19,7 @@ const FeatureList = [
   {
     title: "Discover Templates",
     Svg: "img/home-discover.svg",
-    link: "https://azure.github.io/awesome-azd/",
+    link: "https://azure.github.io/ai-apps/",
     description:
       "View our gallery of community-contributed and Microsoft-authored templates.",
     content: "View templates",
@@ -43,7 +43,7 @@ const FeatureList = [
   {
     title: "Contribute to the Gallery",
     Svg: "img/home-contribute.svg",
-    link: "https://azure.github.io/awesome-azd/docs/intro",
+    link: "https://azure.github.io/ai-apps/docs/intro",
     description:
       "After making your azd template, consider adding it to our gallery to share with fellow azd-developers.",
     content: "View contributor guide",

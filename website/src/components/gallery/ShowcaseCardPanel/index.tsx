@@ -484,7 +484,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   padding: "10px 0",
                 }}
               >
-                Awesome AZD Templates is a place for Azure Developer CLI users
+                AI Apps Templates is a place for Azure Developer CLI users
                 to discover open-source Azure Developer CLI templates.
               </div>
               <div
@@ -504,7 +504,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                 }}
               >
                 Microsoft is not responsible for any non-Microsoft code and does
-                not screen templates included in the Awesome AZD Templates for
+                not screen templates included in the AI Apps Templates for
                 security, privacy, compatibility, or performance issues.
               </div>
               <div
@@ -512,9 +512,9 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
                   padding: "10px 0",
                 }}
               >
-                The templates included in Awesome AZD Templates are not
-                supported by any Microsoft support program or service. Awesome
-                AZD Templates and any Microsoft-provided templates are provided
+                The templates included in AI Apps Templates are not
+                supported by any Microsoft support program or service. AI Apps
+                Templates and any Microsoft-provided templates are provided
                 without warranty of any kind.
               </div>
             </div>

@@ -1,6 +1,6 @@
-name: Release Awesome Azd
+name: Release AI Apps
 
-# This pipeline is manually started only as part of releasing Awesome AZD
+# This pipeline is manually started only as part of releasing AI Apps
 on:
   workflow_dispatch:
 

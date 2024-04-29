@@ -4,7 +4,7 @@ Currently, azd templates can be discovered using the [azd-templates](https://git
 
 ## 1. Landing Page
 
-The **awesome-azd** site supports three behaviors:
+The **ai-apps** site supports three behaviors:
  * Discovery of templates - see Gallery
  * Creation of templates - see Contributor Guide
  * Contribution of templates - see Custom Issue
