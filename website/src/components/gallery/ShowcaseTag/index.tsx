@@ -21,7 +21,7 @@ const TagComp = React.forwardRef<HTMLDivElement, Tag>(
       style={{
         alignContent: "center",
         fontSize: "10px",
-        width:"auto",
+        width: "auto",
       }}
     >
       {label}
@@ -116,7 +116,7 @@ export default function ShowcaseCardTag({
           {tagObjectsSorted.map((tagObject, index) => {
             const id = `showcase_card_tag_${tagObject.tag}`;
             return (
-                <TagComp key={id} id={id} {...tagObject} />
+              <TagComp key={id} id={id} {...tagObject} />
             );
           })}
         </>

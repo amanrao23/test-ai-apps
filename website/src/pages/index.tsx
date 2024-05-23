@@ -20,6 +20,8 @@ import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
 import ShowcaseCardPage from "./ShowcaseCardPage";
+import { type TagType } from "@site/src/data/tags";
+import { TagList } from "@site/src/data/users";
 
 initializeIcons();
 
@@ -44,6 +46,8 @@ const App = () => {
     }, 500);
   }, []);
 
+  const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
+
   return !loading ? (
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
@@ -51,10 +55,10 @@ const App = () => {
       <ShowcaseTemplateSearch />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>
-          <ShowcaseLeftFilters />
+          <ShowcaseLeftFilters activeTags={activeTags} />
         </div>
         <div className={styles.card}>
-          <ShowcaseCardPage />
+          <ShowcaseCardPage setActiveTags={setActiveTags} />
         </div>
       </div>
     </FluentProvider>

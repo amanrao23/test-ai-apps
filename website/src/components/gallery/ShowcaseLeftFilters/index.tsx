@@ -21,9 +21,11 @@ import { useColorMode } from "@docusaurus/theme-common";
 function ShowcaseFilterViewAll({
   tags,
   number,
+  activeTags,
 }: {
   tags: TagType[];
   number: string;
+  activeTags: TagType[];
 }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -61,11 +63,11 @@ function ShowcaseFilterViewAll({
             className={styles.checkboxListItem}
             style={{ marginBottom: "7px" }}
           >
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} activeTags={activeTags} />
           </div>
         ) : (
           <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+            <ShowcaseTagSelect tag={tag} label={tagObject.label} activeTags={activeTags} />
           </div>
         );
       })}
@@ -84,7 +86,7 @@ function ShowcaseFilterViewAll({
 
                 return (
                   <div key={id} className={styles.checkboxListItem}>
-                    <ShowcaseTagSelect tag={tag} label={tagObject.label} />
+                    <ShowcaseTagSelect tag={tag} label={tagObject.label} activeTags={activeTags} />
                   </div>
                 );
               })}
@@ -112,48 +114,32 @@ function ShowcaseFilterViewAll({
   );
 }
 
-export default function ShowcaseLeftFilters() {
+export default function ShowcaseLeftFilters({
+  activeTags,
+}: {
+  activeTags: TagType[];
+}) {
   const sortTagList = TagList.sort();
-  const uncategoryTag = TagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === undefined;
-  });
   const languageTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Language";
   });
-  const frameworkTag = sortTagList.filter((tag) => {
+  const modelOpenAITag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Framework";
+    return tagObject.type === "Model" && tagObject.subType === "OpenAI";
   });
-  const servicesTag = sortTagList.filter((tag) => {
+  const modelMetaTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Service";
+    return tagObject.type === "Model" && tagObject.subType === "Meta";
   });
-  const databaseTag = sortTagList.filter((tag) => {
+  const taskTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Database";
-  });
-  const infrastructureAsCodeTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Infrastructure as Code";
-  });
-  const otherTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Tools";
-  });
-  const topicTag = sortTagList.filter((tag) => {
-    const tagObject = Tags[tag];
-    return tagObject.type === "Topic";
+    return tagObject.type === "Task";
   });
   const [openItems, setOpenItems] = React.useState([
     "1",
     "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "7",
+    "3"
   ]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
@@ -165,135 +151,34 @@ export default function ShowcaseLeftFilters() {
       multiple
       collapsible
     >
-      <div style={{ paddingBottom: "7px" }}>
-        <div
-          style={{
-            fontSize: "20px",
-            fontWeight: "500",
-            padding: "0 0 15px 12px",
-          }}
-        >
-          Filter by
-        </div>
-        {uncategoryTag.map((tag) => {
-          const tagObject = Tags[tag];
-          const id = `showcase_checkbox_id_${tag}`;
-
-          return (
-            <div
-              key={id}
-              className={styles.checkboxListItem}
-              style={{ paddingLeft: "12px" }}
-            >
-              <ShowcaseTagSelect tag={tag} label={tagObject.label} />
-            </div>
-          );
-        })}
-      </div>
+      <div className={styles.filterby}>Filter by</div>
       <AccordionItem value="1">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Language</div>
+        <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
+          <div className={styles.tagCatalog}>Language</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={languageTag} number={"1"} />
+          <ShowcaseFilterViewAll tags={languageTag} number={"1"} activeTags={activeTags} />
         </AccordionPanel>
       </AccordionItem>
-
       <AccordionItem value="2">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Framework</div>
+        <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
+          <div className={styles.tagCatalog}>Model</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={frameworkTag} number={"2"} />
+          <div className={styles.tagSubCatalog}>OpenAI</div>
+          <ShowcaseFilterViewAll tags={modelOpenAITag} number={"21"} activeTags={activeTags} />
+        </AccordionPanel>
+        <AccordionPanel>
+          <div className={styles.tagSubCatalog}>Meta</div>
+          <ShowcaseFilterViewAll tags={modelMetaTag} number={"22"} activeTags={activeTags} />
         </AccordionPanel>
       </AccordionItem>
-
       <AccordionItem value="3">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Services</div>
+        <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
+          <div className={styles.tagCatalog}>Task</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={servicesTag} number={"3"} />
-        </AccordionPanel>
-      </AccordionItem>
-
-      <AccordionItem value="4">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Database</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll tags={databaseTag} number={"4"} />
-        </AccordionPanel>
-      </AccordionItem>
-
-      <AccordionItem value="5">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>
-            Infrastructure as Code
-          </div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll tags={infrastructureAsCodeTag} number={"5"} />
-        </AccordionPanel>
-      </AccordionItem>
-
-      <AccordionItem value="6">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Tools</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll tags={otherTag} number={"6"} />
-        </AccordionPanel>
-      </AccordionItem>
-
-      <AccordionItem value="7">
-        <AccordionHeader
-          expandIconPosition="end"
-          style={{
-            background:
-              "linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat",
-          }}
-        >
-          <div style={{ fontSize: "16px", fontWeight: "500" }}>Topic</div>
-        </AccordionHeader>
-        <AccordionPanel>
-          <ShowcaseFilterViewAll tags={topicTag} number={"7"} />
+          <ShowcaseFilterViewAll tags={taskTag} number={"3"} activeTags={activeTags} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

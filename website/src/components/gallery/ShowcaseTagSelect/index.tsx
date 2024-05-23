@@ -8,7 +8,6 @@ import { useHistory, useLocation } from "@docusaurus/router";
 import { toggleListItem } from "@site/src/utils/jsUtils";
 import { prepareUserState } from "@site/src/pages/index";
 import { type TagType } from "@site/src/data/tags";
-
 import { Checkbox } from "@fluentui/react-components";
 
 const TagQueryStringKey = "tags";
@@ -29,9 +28,11 @@ export default function ShowcaseTagSelect(
   {
     label,
     tag,
+    activeTags,
   }: {
     label: string;
     tag: TagType;
+    activeTags: TagType[];
   }
 ): JSX.Element {
   const location = useLocation();
@@ -41,6 +42,7 @@ export default function ShowcaseTagSelect(
     const tags = readSearchTags(location.search);
     setSelected(tags.includes(tag));
   }, [tag, location]);
+
   const toggleTag = useCallback(() => {
     const tags = readSearchTags(location.search);
     const newTags = toggleListItem(tags, tag);
@@ -63,6 +65,7 @@ export default function ShowcaseTagSelect(
         onChange={toggleTag}
         checked={selected}
         label={label}
+        disabled={!activeTags?.includes(tag)}
       />
     </>
   );

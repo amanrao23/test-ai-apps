@@ -66,18 +66,18 @@ function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
           styles={
             colorMode != "dark"
               ? {
-                  calloutMain: {
-                    padding: "3px 10px",
-                  },
-                }
+                calloutMain: {
+                  padding: "3px 10px",
+                },
+              }
               : {
-                  beak: { background: "#292929" },
-                  beakCurtain: { background: "#292929" },
-                  calloutMain: {
-                    background: "transparent",
-                    padding: "3px 10px",
-                  },
-                }
+                beak: { background: "#292929" },
+                beakCurtain: { background: "#292929" },
+                calloutMain: {
+                  background: "transparent",
+                  padding: "3px 10px",
+                },
+              }
           }
         >
           <Text variant="small">Copied</Text>
@@ -562,12 +562,8 @@ function ShowcaseCardAzureTag({
           }}
         >
           <img
-            src={
-              colorMode != "dark" || tagObject.darkModeAzureIcon == null
-                ? useBaseUrl(tagObject.azureIcon)
-                : useBaseUrl(tagObject.darkModeAzureIcon)
-            }
-            alt="Azure Service Icon"
+            src={useBaseUrl(tagObject.icon)}
+            alt="Icon"
             height={20}
           />
         </div>

@@ -15,3 +15,23 @@
 .color {
   color: var(--ifm-color-purple);
 }
+
+.filterby {
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0 0 15px 12px;
+  padding-bottom: 7px;
+}
+
+.tagCatalog {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.tagCatalogBackground {
+  background: linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat;
+}
+
+.tagSubCatalog {
+  padding: 0 0 7px 0px;
+}
