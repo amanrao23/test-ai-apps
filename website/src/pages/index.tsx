@@ -6,9 +6,9 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 import ShowcaseLeftFilters from "../components/gallery/ShowcaseLeftFilters";
-import ShowcaseTemplateSearch, {
+import ShowcaseCoverPage, {
   UserState,
-} from "../components/gallery/ShowcaseTemplateSearch";
+} from "../components/gallery/ShowcaseCoverPage";
 import {
   teamsLightTheme,
   teamsDarkTheme,
@@ -52,7 +52,7 @@ const App = () => {
     <FluentProvider
       theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
     >
-      <ShowcaseTemplateSearch />
+      <ShowcaseCoverPage />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>
           <ShowcaseLeftFilters activeTags={activeTags} />

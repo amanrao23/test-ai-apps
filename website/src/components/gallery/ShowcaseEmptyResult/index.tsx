@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { InputValue } from "../ShowcaseTemplateSearch";
+import { InputValue } from "../ShowcaseCoverPage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Text, Link as FluentUILink } from "@fluentui/react-components";
 import styles from "./styles.module.css";

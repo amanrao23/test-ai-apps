@@ -7,15 +7,20 @@ import React, { useState, useEffect } from "react";
 import { SearchBox } from "@fluentui/react/lib/SearchBox";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 import { useHistory, useLocation } from "@docusaurus/router";
-import { Text, Link as FluentUILink } from "@fluentui/react-components";
+import {
+  Title1,
+  Title3,
+  Display,
+} from "@fluentui/react-components";
 import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { useColorMode } from "@docusaurus/theme-common";
+import { featuredUsers } from "../../../data/users";
+import ShowcaseCards from "../../../pages/ShowcaseCards";
 
-const TITLE = "Template Library";
-const DESCRIPTION =
-  "A community-contributed template gallery built to work with the Azure Developer CLI.";
-const ADD_URL = "https://aka.ms/azd";
+const title = "Build with AI";
+const description =
+  "Get started with AI application patterns. Edit and deploy using VS Code and GitHub Actions.";
+const subtitle = "Featured AI templates";
 export var InputValue: string | null = null;
 
 export type UserState = {
@@ -105,73 +110,25 @@ function FilterBar(): React.JSX.Element {
   );
 }
 
-export default function ShowcaseTemplateSearch() {
-  const { colorMode } = useColorMode();
+export default function ShowcaseCoverPage() {
   return (
-    <div className={styles.searchContainer}>
+    <div className={styles.coverPageContainer}>
       <img
-        src={
-          colorMode != "dark"
-            ? useBaseUrl("/img/coverBackground.png")
-            : useBaseUrl("/img/coverBackgroundDark.png")
-        }
+        src={useBaseUrl("/img/coverBackground.png")}
         className={styles.cover}
         onError={({ currentTarget }) => {
           currentTarget.style.display = "none";
         }}
         alt=""
       />
-      <div className={styles.searchArea}>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <div className={styles.heroBar}>
-            <Text
-              size={800}
-              align="center"
-              weight="semibold"
-              style={{
-                background:
-                  "linear-gradient(90deg, rgb(112.68, 94.63, 239.06) 0%, rgb(41.21, 120.83, 190.19) 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-              }}
-            >
-              {TITLE}
-            </Text>
-          </div>
-          <Text
-            align="center"
-            size={400}
-            style={{
-              color: "#242424",
-              padding: "10px 0 20px 0",
-            }}
-          >
-            {DESCRIPTION}
-          </Text>
-          <FilterBar />
-          <Text
-            align="center"
-            size={300}
-            style={{
-              color: "#242424",
-              padding: "20px 0",
-            }}
-          >
-            Not familiar with the Azure Developer CLI (azd)?
-            <FluentUILink
-              href={ADD_URL}
-              target="_blank"
-              style={{ paddingLeft: "3px" }}
-              className={styles.learnMoreColor}
-            >
-              Learn more
-            </FluentUILink>
-          </Text>
+      <div className={styles.coverPageArea}>
+        <div className={styles.titleSection}>
+          <Display>{title}</Display>
+          <Title3>{description}</Title3>
+        </div>
+        <div className={styles.subtitleSection}>
+          <Title1>{subtitle}</Title1>
+          <ShowcaseCards filteredUsers={featuredUsers} coverPage={true} />
         </div>
       </div>
     </div>

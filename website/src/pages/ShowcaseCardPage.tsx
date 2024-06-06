@@ -9,7 +9,7 @@ import { useLocation } from "@docusaurus/router";
 import {
   UserState,
   InputValue,
-} from "../components/gallery/ShowcaseTemplateSearch";
+} from "../components/gallery/ShowcaseCoverPage";
 import { type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
 import { Text, Combobox, Option, Spinner } from "@fluentui/react-components";

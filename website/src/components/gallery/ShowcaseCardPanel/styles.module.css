@@ -40,10 +40,6 @@
   color: #616161;
 }
 
-.color {
-  color: var(--ifm-color-purple-light) !important;
-}
-
 .purple {
   filter: invert(37%) sepia(47%) saturate(1651%) hue-rotate(221deg)
     brightness(86%) contrast(90%) !important;
@@ -53,48 +49,4 @@
 .purple:hover {
   filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
     brightness(90%) contrast(93%) !important;
-}
-
-[data-theme="dark"] .purple {
-  filter: invert(82%) sepia(32%) saturate(6544%) hue-rotate(203deg)
-    brightness(101%) contrast(89%) !important;
-}
-
-[data-theme="dark"] .purple:hover {
-  filter: invert(34%) sepia(15%) saturate(4006%) hue-rotate(217deg)
-    brightness(90%) contrast(93%) !important;
-}
-
-[data-theme="dark"] .commandColor {
-  color: #ffffff;
-}
-
-[data-theme="dark"] .borderBottomColor {
-  border-bottom: 1px solid #666666;
-}
-
-[data-theme="dark"] .cardDescription {
-  color: #adadad;
-}
-
-[data-theme="dark"] .cardTag {
-  color: #adadad;
-}
-
-[data-theme="dark"] .textColor {
-  color: #FFFFFF;
-}
-
-[data-theme="dark"] .squareColor {
-  background-color: #141414;
-}
-
-[data-theme="dark"] .terminalSquareTopColor {
-  background-color: #404040;
-  border: 1px solid #3d3d3d;
-}
-
-[data-theme="dark"] .terminalSquareBottomColor {
-  background-color: #2f2f2f;
-  border: 1px solid #3d3d3d;
 }

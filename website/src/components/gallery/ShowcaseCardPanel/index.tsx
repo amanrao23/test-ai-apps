@@ -30,8 +30,7 @@ import { useColorMode } from "@docusaurus/theme-common";
 function CopyButton({ url, colorMode }: { url: string; colorMode: string }) {
   const copySVG = useBaseUrl("/img/purpleCopy.svg");
   const buttonId = useId("copyButton");
-  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] =
-    useBoolean(false);
+  const [isCalloutVisible, { toggle: toggleIsCalloutVisible }] = useBoolean(false);
   const labelId = useId("callout-label");
   const descriptionId = useId("callout-description");
   return (
@@ -165,7 +164,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         <ShowcaseMultipleAuthors
           key={"author_" + user.title}
           user={user}
-          cardPanel={true}
+          cardPanel={false}
         />
         <div className={styles.textColor}>•</div>
         {/* <div>Last Update: </div>
@@ -209,7 +208,7 @@ export default function ShowcaseCardPanel({ user }: { user: User }) {
         <ShowcaseCardTag
           key={"tag_" + user.title}
           tags={user.tags}
-          moreTag={false}
+          cardPanel={true}
         />
       </div>
       <Pivot

@@ -28,3 +28,5 @@ function sortUsers() {
 }
 
 export const sortedUsers = sortUsers();
+
+export const featuredUsers = sortedUsers.filter((user) => user.tags.includes("featured"));

@@ -8,12 +8,14 @@ import ShowcaseEmptyResult from "../components/gallery/ShowcaseEmptyResult";
 import { type User, type TagType } from "../data/tags";
 import styles from "./styles.module.css";
 import ShowcaseCard from "../components/gallery/ShowcaseCard";
-import ShowcaseContributionCard from "../components/gallery/ShowcaseContributionCard";
+import ShowcaseSurveyCard from "../components/gallery/ShowcaseSurveyCard";
 
 export default function ShowcaseCards({
   filteredUsers,
+  coverPage,
 }: {
   filteredUsers: User[];
+  coverPage: boolean;
 }) {
   const len = filteredUsers ? filteredUsers.length : 0;
   if (len === 0) {
@@ -26,13 +28,13 @@ export default function ShowcaseCards({
         <div className={styles.showcaseList}>
           {filteredUsers.map((user, index) => (
             <React.Fragment key={index}>
-              {(len < 6 && index === len - 1) || index === 4 ? (
-                <React.Fragment key="cardWithContributionCard">
+              {((len < 6 && index === len - 1) || index === 4) && !coverPage ? (
+                <React.Fragment key="cardWithSurveyCard">
                   <React.Fragment key={user.title}>
                     <ShowcaseCard user={user} />
                   </React.Fragment>
-                  <React.Fragment key="fragment_contributionCard">
-                    <ShowcaseContributionCard />
+                  <React.Fragment key="fragment_surveyCard">
+                    <ShowcaseSurveyCard />
                   </React.Fragment>
                 </React.Fragment>
               ) : (

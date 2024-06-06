@@ -1,26 +1,52 @@
 [
   {
+    "title": "Starter - Bicep",
+    "description": "A starter template with Bicep as infrastructure provider",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-starter-bicep",
+    "tags": ["featured", "java", "aca"]
+  },
+  {
+    "title": "Starter - Terraform",
+    "description": "A starter template with Terraform as infrastructure provider",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-starter-terraform",
+    "tags": [
+      "featured",
+      "dotnetCsharp",
+      "aca",
+      "monitor",
+      "keyvault",
+      "azuresql"
+    ]
+  },
+  {
+    "title": "React Web App with C# API and MongoDB",
+    "description": "A starter template with Terraform as infrastructure provider",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/todo-csharp-cosmos-sql",
+    "tags": [
+      "featured",
+      "python",
+      "aca",
+      "monitor",
+      "keyvault",
+      "azuresql",
+      "functions"
+    ]
+  },
+  {
     "title": "ChatGPT and Enterprise data with Azure OpenAI and Azure AI Search",
     "description": "A chat app using Python, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about employee benefits at a fictitious company.",
     "website": "https://learn.microsoft.com/en-us/azure/developer/python/get-started-app-chat-template?tabs=github-codespaces",
     "author": "Natalia Venditto",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": ["python", "chat", "gpt35turbo"]
-  },
-  {
-    "title": "ChatGPT and Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "A chat app using JavaScript, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about rental properties.",
-    "website": "https://learn.microsoft.com/en-us/azure/developer/javascript/get-started-app-chat-template?tabs=github-codespaces",
-    "author": "Natalia Venditto",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
-    "tags": ["javascript", "chat", "gpt35turbo"]
-  },
-  {
-    "title": "ChatGPT and Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "a chat app using C#, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about employee benefits at a fictitious company.",
-    "website": "https://learn.microsoft.com/en-us/dotnet/ai/get-started-app-chat-template?tabs=github-codespaces",
-    "author": "Natalia Venditto",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
-    "tags": ["dotnetCsharp", "chat", "gpt35turbo"]
   }
 ]

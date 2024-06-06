@@ -29,7 +29,7 @@
   height: 100%;
 }
 
-.searchContainer {
+.coverPageContainer {
   display: inline-block;
   overflow: hidden;
   position: relative;
@@ -52,13 +52,11 @@
 
 .showcaseList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(285px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 24px;
 }
 
 .showcaseFavorite {
-  padding-top: 2rem;
-  padding-bottom: 2rem;
   background-color: var(--site-color-favorite-background);
 }
 
@@ -93,10 +91,6 @@
 .filterAndCard {
   display: flex;
   padding: 30px;
-}
-
-[data-theme="dark"] .filterAndCard {
-  background-color: #1f1f1f;
 }
 
 .filter {

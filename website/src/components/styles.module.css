@@ -26,10 +26,6 @@
   max-height: 100%;
 }
 
-[data-theme="dark"] .card {
-  background-color: #292929;
-}
-
 @media screen and (max-width: 996px) {
   .row {
     flex-flow: column;

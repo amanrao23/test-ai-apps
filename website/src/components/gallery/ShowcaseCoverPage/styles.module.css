@@ -10,20 +10,33 @@
   height: 100%;
 }
 
-.searchContainer {
+.coverPageContainer {
   display: inline-block;
   overflow: hidden;
   position: relative;
   width: 100%;
 }
 
-.searchArea {
+.coverPageArea {
   position: relative;
   width: 100%;
-  height: 300px;
+  height: 728px;
+  padding: 72px 72px 96px 72px;
+}
+
+.titleSection{
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  width: 41%;
+}
+
+.subtitleSection{
+  padding-top: 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
 }
 
 .heroBar {
@@ -31,14 +44,12 @@
   text-align: center;
 }
 
-.color {
-  color: var(--ifm-color-purple);
-}
-
 .learnMoreColor {
   color: #7160e8 !important;
 }
 
-[data-theme="dark"] .learnMoreColor {
-  color: #5649b0 !important;
+@media screen and (max-width: 1120px) {
+  .coverPageArea {
+    height: 100%;
+  }
 }

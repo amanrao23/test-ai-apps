@@ -12,10 +12,6 @@
   margin-right: 0;
 }
 
-.color {
-  color: var(--ifm-color-purple);
-}
-
 .filterby {
   font-size: 20px;
   font-weight: 500;
