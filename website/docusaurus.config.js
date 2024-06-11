@@ -22,7 +22,7 @@ const config = {
 
   // CONIFIG: Used for GitHub Pages
   url: "https://azure.github.io",
-  baseUrl: "/ai-apps/",
+  baseUrl: "/",
   favicon: "img/favicon.ico",
   organizationName: "azure",
   projectName: "ai-apps",
