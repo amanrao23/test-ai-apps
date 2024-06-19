@@ -12,12 +12,13 @@
 .cardPanelTag {
   height: 20px;
   align-content: center;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #B4D6FA !important;
   padding: 0 5px;
   margin-top: 3px;
   font-size: 10px;
   min-width: 0px;
-  color: #616161;
+  color: #115EA3 !important;
   font-weight: 500;
   border-radius: 100px;
+  background: #EBF3FC !important;
 }

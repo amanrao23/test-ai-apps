@@ -44,9 +44,10 @@
   {
     "title": "ChatGPT and Enterprise data with Azure OpenAI and Azure AI Search",
     "description": "A chat app using Python, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about employee benefits at a fictitious company.",
-    "website": "https://learn.microsoft.com/en-us/azure/developer/python/get-started-app-chat-template?tabs=github-codespaces",
-    "author": "Natalia Venditto",
+    "website": "https://learn.microsoft.com/en-us/azure/developer/python/get-started-app-chat-template?tabs=github-codespaces , https://github.com/Azure-Samples/azure-search-openai-demo1, https://github.com/Azure-Samples/azure-search-openai-demo2",
+    "author": "Natalia Venditto, Natalia Venditto1, Natalia Venditto2",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
-    "tags": ["python", "chat", "gpt35turbo"]
+    "tags": ["python", "chat", "gpt35turbo", "aca", "keyvault", "azuresql"],
+    "video":"https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
   }
 ]

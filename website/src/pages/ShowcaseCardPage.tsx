@@ -171,7 +171,7 @@ export default function ShowcaseCardPage({
       {loading ? (
         <Spinner labelPosition="below" label="Loading..." />
       ) : (
-        <ShowcaseCards filteredUsers={cards} />
+        <ShowcaseCards filteredUsers={cards} coverPage={false}/>
       )}
     </>
   );

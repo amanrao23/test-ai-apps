@@ -8,18 +8,14 @@ import styleCSS from "./styles.module.css";
 import { type User } from "../../../data/tags";
 import {
   Card,
-  makeStyles,
   CardFooter,
   Caption1Strong,
   Image,
-  caption1StrongClassNames,
 } from "@fluentui/react-components";
 import { useBoolean } from "@fluentui/react-hooks";
 import {
-  IRenderFunction,
   Panel,
   PanelType,
-  IPanelProps,
   ThemeProvider,
 } from "@fluentui/react";
 import ShowcaseCardPanel from "../ShowcaseCardPanel/index";
@@ -29,8 +25,9 @@ import { useEffect, useState } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
 type GitHubRepoInfo = {
-  forks: number
-  stars: number
+  forks: number;
+  stars: number;
+  updatedOn: Date;
 } | null;
 
 function ShowcaseCard({ user }: { user: User }): JSX.Element {
@@ -45,17 +42,20 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const [githubData, setGithubData] = useState(initialGitHubData);
 
   useEffect(() => {
-    const repoSlug = user.source.toLowerCase().replace("https://github.com/", "");
+    const repoSlug = user.source
+      .toLowerCase()
+      .replace("https://github.com/", "");
     const slugParts = repoSlug.split("/");
     const owner = slugParts[0];
     const repo = slugParts[1];
     fetch(`https://cacheddkci2rpqggas.blob.core.windows.net/${owner}/${repo}`)
       .then((response) => response.json())
-      .then((data: { forks: number, stars: number }) => {
+      .then((data: { forks: number; stars: number; updatedOn: Date }) => {
         setGithubData({
           forks: data.forks,
-          stars: data.stars
-        })
+          stars: data.stars,
+          updatedOn: data.updatedOn,
+        });
       })
       .catch((error) => console.error("Error:", error));
   }, []);
@@ -70,14 +70,13 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
       <div>
         <ThemeProvider>
           <Panel
-            headerText={title}
             isLightDismiss
             isOpen={isOpen}
             onDismiss={dismissPanel}
             closeButtonAriaLabel="Close"
             type={PanelType.medium}
           >
-            <ShowcaseCardPanel user={user} />
+            <ShowcaseCardPanel user={user} githubData={githubData} />
           </Panel>
         </ThemeProvider>
         <div className={styleCSS.cardTitle}>{title}</div>
@@ -96,36 +95,45 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   );
 }
 
-const GitHubInfo = ({githubData}) => {
+const GitHubInfo = ({ githubData }) => {
   const formatNumber = (number: number): string => {
     return Intl.NumberFormat("en-US", {
       notation: "compact",
       maximumFractionDigits: 1,
     }).format(number);
   };
-  
   if (!githubData) return githubData;
 
-  return <div className={styleCSS.gitHubData}>
-    <Image
-      alt="fork"
-      src={useBaseUrl("/img/fork.svg")}
-      height={16}
-      width={16}
-    />
-    <Caption1Strong className={styleCSS.forkNumber}>
-      {formatNumber(githubData.forks) || 0}
-    </Caption1Strong>
-    <Image
-      alt="star"
-      src={useBaseUrl("/img/star.svg")}
-      height={16}
-      width={16}
-    />
-    <Caption1Strong className={styleCSS.starNumber}>
-      {formatNumber(githubData.stars) || 0}
-    </Caption1Strong>{" "}
-  </div>
-}
+  return (
+    <div className={styleCSS.gitHubData}>
+      {formatNumber(githubData.forks) == "NaN" ? null : (
+        <>
+          <Image
+            alt="fork"
+            src={useBaseUrl("/img/fork.svg")}
+            height={16}
+            width={16}
+          />
+          <Caption1Strong className={styleCSS.forkNumber}>
+            {formatNumber(githubData.forks)}
+          </Caption1Strong>
+        </>
+      )}
+      {formatNumber(githubData.stars) == "NaN" ? null : (
+        <>
+          <Image
+            alt="star"
+            src={useBaseUrl("/img/star.svg")}
+            height={16}
+            width={16}
+          />
+          <Caption1Strong className={styleCSS.starNumber}>
+            {formatNumber(githubData.stars)}
+          </Caption1Strong>
+        </>
+      )}
+    </div>
+  );
+};
 
 export default React.memo(ShowcaseCard);

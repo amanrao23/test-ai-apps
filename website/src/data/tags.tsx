@@ -20,6 +20,7 @@ export type User = {
   author: string;
   source: string | null;
   tags: TagType[];
+  video?: string;
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -82,6 +83,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Python",
     description: "Template contains Python app code",
     type: "Language",
+    icon: "./img/python.svg",
   },
   dalle: {
     label: "Dalle",
