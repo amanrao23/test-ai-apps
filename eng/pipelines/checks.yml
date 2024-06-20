@@ -19,7 +19,7 @@ jobs:
     steps:
       - template: /eng/common/pipelines/templates/steps/policheck.yml
         parameters:
-          ExclusionDataBaseFileName: AIAppsPoliCheckExclusion
+          ExclusionDataBaseFileName: PolicheckDefaults
           PublishAnalysisLogs: false
 
   - job: CGScan
