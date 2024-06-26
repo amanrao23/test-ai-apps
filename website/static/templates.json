@@ -6,7 +6,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-bicep",
-    "tags": ["featured", "java", "aca"]
+    "tags": ["featured", "javascript", "gpt35turbo", "dalle","llama","aca"]
   },
   {
     "title": "Starter - Terraform",

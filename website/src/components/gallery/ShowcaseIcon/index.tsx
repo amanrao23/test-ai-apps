@@ -5,11 +5,12 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import { Tag, Tags, type User, type TagType } from "../../../data/tags";
+import { Tags, type User, type TagType } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
-import { Badge, Tooltip, Image, Button } from "@fluentui/react-components";
+import { Tooltip, Image, Button } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { openai, meta } from "../../../data/tags";
 
 export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   const tagObjects = tags
@@ -18,15 +19,20 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   const tagObjectsSorted = sortBy(tagObjects, (tagObject) =>
     TagList.indexOf(tagObject.tag)
   );
-  // TODO Modify once filter tags are up to date
-  const checkAzureTag = tagObjectsSorted.filter((tag) =>
-    tag.label.includes("Azure")
-  );
-  const length = checkAzureTag.length;
+  const languageTags = tagObjectsSorted.filter((tag) =>
+    tag.type == "Language");
+  const uniqueOpenAITag = tagObjectsSorted.filter((tag) =>
+    tag.type == "Model" && tag.subType == openai).slice(0, 1);
+  const uniqueMetaTag = tagObjectsSorted.filter((tag) =>
+    tag.type == "Model" && tag.subType == meta).slice(0, 1);
+  const azureTags = tagObjectsSorted.filter((tag) =>
+    tag.label.includes("Azure"));
+  const totalTags = [...languageTags, ...uniqueOpenAITag, ...uniqueMetaTag, ...azureTags];
+  const length = totalTags.length;
   let number = 3;
   const rest = length - number;
 
-  const cardPanelDetailList = checkAzureTag
+  const cardPanelDetailList = totalTags
     .slice(number, length)
     .map((tagObject) => tagObject.label)
     .join("\n");
@@ -34,7 +40,7 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   if (length > number && rest > 1) {
     return (
       <>
-        {checkAzureTag.slice(0, number).map((tagObject) => {
+        {totalTags.slice(0, number).map((tagObject) => {
           const key = `showcase_card_icon_${tagObject.tag}`;
           return (
             <Tooltip
@@ -44,7 +50,16 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
               {...tagObject}
               key={key}
             >
-              <Button
+              {tagObject.type == "Model" ? <Button
+                icon={
+                  <Image
+                    alt={tagObject.subType.label}
+                    src={useBaseUrl(tagObject.subType.icon)}
+                    height={16}
+                    width={16}
+                  />
+                }
+              /> : <Button
                 icon={
                   <Image
                     alt={tagObject.label}
@@ -53,7 +68,7 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
                     width={16}
                   />
                 }
-              />
+              />}
             </Tooltip>
           );
         })}
@@ -76,7 +91,7 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   } else {
     return (
       <>
-        {checkAzureTag.map((tagObject) => {
+        {totalTags.map((tagObject) => {
           const key = `showcase_card_icon_${tagObject.tag}`;
           return (
             <Tooltip
@@ -86,7 +101,16 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
               {...tagObject}
               key={key}
             >
-              <Button
+              {tagObject.type == "Model" ? <Button
+                icon={
+                  <Image
+                    alt={tagObject.subType.label}
+                    src={useBaseUrl(tagObject.subType.icon)}
+                    height={16}
+                    width={16}
+                  />
+                }
+              /> : <Button
                 icon={
                   <Image
                     alt={tagObject.label}
@@ -95,7 +119,7 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
                     width={16}
                   />
                 }
-              />
+              />}
             </Tooltip>
           );
         })}

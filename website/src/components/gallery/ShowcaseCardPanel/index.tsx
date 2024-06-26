@@ -174,13 +174,13 @@ function CardPanelTag({ tags }: { tags: Tag[] }) {
             key={label}
             className={styles.cardPanelTag}
           >
-            <div className={styles.icon}><img src={useBaseUrl(item.icon)} alt={label} height={20} /></div>
+            {subType ? <div className={styles.icon}><img src={useBaseUrl(item.subType.icon)} alt={label} height={20} /></div> : <div className={styles.icon}><img src={useBaseUrl(item.icon)} alt={label} height={20} /></div>}
             <div className={styles.iconTextGroup}>
               <div className={styles.iconText}>
                 {label}
               </div>
               <div className={styles.iconLearnMoreGroup}>
-                {subType ? <div>{subType}</div> : <div>Azure</div>}
+                {subType ? <div>{subType.label}</div> : <div>Azure</div>}
                 <div>•</div>
                 <Link
                   href={item.url}

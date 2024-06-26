@@ -9,7 +9,7 @@ export type Tag = {
   icon?: string;
   url?: string;
   type?: string;
-  subType?: string;
+  subType?: SubType;
 };
 
 export type User = {
@@ -21,6 +21,21 @@ export type User = {
   source: string | null;
   tags: TagType[];
   video?: string;
+};
+
+type SubType = {
+  label: string;
+  icon: string;
+};
+
+export const openai: SubType = {
+  label: "OpenAI",
+  icon: "./img/openAI.svg",
+};
+
+export const meta: SubType = {
+  label: "Meta",
+  icon: "./img/meta.svg",
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -68,11 +83,13 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "JavaScript",
     description: "Template contains JavaScript app code",
     type: "Language",
+    icon: "./img/js.svg",
   },
   dotnetCsharp: {
     label: ".NET/C#",
     description: "Template contains .NET and/or C# app code",
     type: "Language",
+    icon: "./img/csharp.svg",
   },
   java: {
     label: "Java",
@@ -89,31 +106,31 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Dalle",
     description: "Template use OpenAI Dalle model",
     type: "Model",
-    subType: "OpenAI",
+    subType: openai,
   },
   gpt35turbo: {
     label: "GPT 3.5 Turbo",
     description: "Template use OpenAI GPT 3.5 Turbo model",
     type: "Model",
-    subType: "OpenAI",
+    subType: openai,
   },
   gpt4: {
     label: "GPT 4 Turbo",
     description: "Template use OpenAI GPT 4 model",
     type: "Model",
-    subType: "OpenAI",
+    subType: openai,
   },
   llama: {
     label: "Llama",
     description: "Template use Meta Llama model",
     type: "Model",
-    subType: "Meta",
+    subType: meta,
   },
   llama2: {
     label: "Llama 2",
     description: "Template use Meta Llama 2 model",
     type: "Model",
-    subType: "Meta",
+    subType: meta,
   },
   chat: {
     label: "Chat",
