@@ -4,6 +4,10 @@
  */
 
 /* Keep for future change on light vs dark theme */
-.colorLink {
-  padding-left: 10px !important;
+.emptyResultSection {
+  display: flex;
+  padding: 72px 0;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
 }

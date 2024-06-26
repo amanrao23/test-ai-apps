@@ -6,9 +6,8 @@
 import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 import ShowcaseLeftFilters from "../components/gallery/ShowcaseLeftFilters";
-import ShowcaseCoverPage, {
-  UserState,
-} from "../components/gallery/ShowcaseCoverPage";
+import ShowcaseCoverPage from "../components/gallery/ShowcaseCoverPage";
+import { UserState } from "./ShowcaseCardPage";
 import {
   teamsLightTheme,
   teamsDarkTheme,

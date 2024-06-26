@@ -6,7 +6,7 @@
 /** @type {import('@docusaurus/types').Config} */
 
 import { themes as prismThemes } from "prism-react-renderer";
-import {manageCookieLabel} from "./constants.js";
+import { manageCookieLabel } from "./constants.js";
 
 const config = {
   // CONFIG: Add Custom Fields - globally reference them from siteConfig
@@ -70,7 +70,7 @@ const config = {
       // CONFIG: navbar logo, items, style, stickiness
       //    See: https://docusaurus.io/docs/next/api/themes/configuration#navbar
       navbar: {
-        title: "ai-apps",
+        title: "AI Apps",
         logo: {
           alt: "AI Apps logo",
           src: "img/logo.png",
@@ -80,43 +80,11 @@ const config = {
           height: 32,
         },
         items: [
-          {
-            to: "/about",
-            label: "Getting Started",
-            position: "left",
-          },
-          {
-            label: "Contribute",
-            position: "left",
-            type: "doc",
-            docId: "intro",
-          },
-          {
-            to: "https://aka.ms/azd",
-            label: "Docs",
-            position: "left",
-          },
-          {
-            to: "https://learn.microsoft.com/azure/architecture/browse/",
-            label: "Resources",
-            position: "left",
-          },
-
-          // right
-          {
-            href: "https://github.com/Azure/ai-apps",
-            position: "right",
-            className: "header-github-link",
-            "aria-label": "GitHub repository",
-          },
-
           // CONFIG:
           // Make sure you have class defined in src/css/custom.css
           {
-            to: "https://azure.github.io/ai-apps/docs/intro",
-            label: "Submit your template!",
+            type: "custom-NavbarButton",
             position: "right",
-            className: "button",
           },
         ],
       },
@@ -126,10 +94,6 @@ const config = {
       footer: {
         style: "light",
         links: [
-          {
-            label: `azd-templates`,
-            to: "https://github.com/topics/azd-templates",
-          },
           {
             label: `azd Reference`,
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/reference",

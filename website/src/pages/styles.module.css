@@ -118,6 +118,28 @@
   width: 100%;
 }
 
+.searchBox {
+  width: 80% !important;
+  max-width: 80% !important;
+}
+
+.sortBar {
+  width: 20% !important;
+}
+
+.searchAndSortBarSection {
+  display: flex;
+  gap: 16px;
+}
+
+.templateResultsNumber {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 5px;
+}
+
 @media screen and (max-width: 996px) {
   .filterAndCard {
     flex-direction: column;
@@ -133,5 +155,20 @@
 
   .cardLoad {
     margin-top: 1rem;
+  }
+
+  .searchAndSortBarSection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .searchBox {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  .sortBar {
+    width: 100% !important;
   }
 }

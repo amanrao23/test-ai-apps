@@ -39,15 +39,6 @@
   gap: 32px;
 }
 
-.heroBar {
-  max-width: 740px;
-  text-align: center;
-}
-
-.learnMoreColor {
-  color: #7160e8 !important;
-}
-
 @media screen and (max-width: 1264px) {
   .coverPageArea {
     height: 100%;

@@ -67,7 +67,7 @@ export default function NavbarContent() {
         // TODO stop hardcoding items?
         // Ask the user to add the respective navbar items => more flexible
         <>
-          <NavbarColorModeToggle className={styles.colorModeToggle} />
+          {/* <NavbarColorModeToggle className={styles.colorModeToggle} /> */}
           <NavbarItems items={rightItems} />
           {!searchBarItem && (
             <NavbarSearch>

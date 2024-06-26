@@ -1,0 +1,16 @@
+/**
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License.
+ */
+
+.button {
+  display: flex !important;
+  padding: 6px 12px !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 6px !important;
+  border-radius: 4px !important;
+  border: 1px solid #d1d1d1 !important;
+  background: #ffffff !important;
+  color: #242424 !important;
+}
