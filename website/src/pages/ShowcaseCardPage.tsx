@@ -182,11 +182,14 @@ export default function ShowcaseCardPage({
   };
   const templateNumber = cards ? cards.length : 0;
 
+  // Adobe Analytics Content
+  const contentForAdobeAnalytics = `{\"cN\":\"Searchbox\"}`;
+
   return (
     <>
       <div>
         <div className={styles.searchAndSortBarSection}>
-          <FilterBar />
+          <FilterBar data-m={contentForAdobeAnalytics} />
           <Combobox
             className={styles.sortBar}
             aria-labelledby="combo-default"

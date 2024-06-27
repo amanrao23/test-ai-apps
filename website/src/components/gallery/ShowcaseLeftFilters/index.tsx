@@ -55,19 +55,20 @@ function ShowcaseFilterViewAll({
     <>
       {tags.slice(0, 6).map((tag, index) => {
         const tagObject = Tags[tag];
+        const key = `showcase_checkbox_key_${tag}`;
         const id = `showcase_checkbox_id_${tag}`;
 
         return index == tags.length - 1 ? (
           <div
-            key={id}
+            key={key}
             className={styles.checkboxListItem}
             style={{ marginBottom: "7px" }}
           >
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} activeTags={activeTags} />
+            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} activeTags={activeTags} />
           </div>
         ) : (
-          <div key={id} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect tag={tag} label={tagObject.label} activeTags={activeTags} />
+          <div key={key} className={styles.checkboxListItem}>
+            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} activeTags={activeTags} />
           </div>
         );
       })}
@@ -83,10 +84,11 @@ function ShowcaseFilterViewAll({
               {tags.slice(6, tags.length).map((tag) => {
                 const tagObject = Tags[tag];
                 const id = `showcase_checkbox_id_${tag}`;
+                const key = `showcase_checkbox_key_${tag}`;
 
                 return (
-                  <div key={id} className={styles.checkboxListItem}>
-                    <ShowcaseTagSelect tag={tag} label={tagObject.label} activeTags={activeTags} />
+                  <div key={key} className={styles.checkboxListItem}>
+                    <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} activeTags={activeTags} />
                   </div>
                 );
               })}
@@ -144,6 +146,7 @@ export default function ShowcaseLeftFilters({
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };
+
   return (
     <Accordion
       openItems={openItems}
@@ -154,7 +157,7 @@ export default function ShowcaseLeftFilters({
       <div className={styles.filterby}>Filter by</div>
       <AccordionItem value="1">
         <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
-          <div className={styles.tagCatalog}>Language</div>
+          <div className={styles.tagCatalog} data-m='{\"id\":\"Language\",\"cN\":\"Tags Category\"}'>Language</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={languageTag} number={"1"} activeTags={activeTags} />
@@ -162,20 +165,20 @@ export default function ShowcaseLeftFilters({
       </AccordionItem>
       <AccordionItem value="2">
         <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
-          <div className={styles.tagCatalog}>Model</div>
+          <div className={styles.tagCatalog} data-m='{\"id\":\"Model\",\"cN\":\"Tags Category\"}'>Model</div>
         </AccordionHeader>
         <AccordionPanel>
-          <div className={styles.tagSubCatalog}>OpenAI</div>
+          <div className={styles.tagSubCatalog} data-m='{\"id\":\"OpenAI\",\"cN\":\"Tags Sub Category\"}'>OpenAI</div>
           <ShowcaseFilterViewAll tags={modelOpenAITag} number={"21"} activeTags={activeTags} />
         </AccordionPanel>
         <AccordionPanel>
-          <div className={styles.tagSubCatalog}>Meta</div>
+          <div className={styles.tagSubCatalog} data-m='{\"id\":\"Meta\",\"cN\":\"Tags Sub Category\"}'>Meta</div>
           <ShowcaseFilterViewAll tags={modelMetaTag} number={"22"} activeTags={activeTags} />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="3">
         <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
-          <div className={styles.tagCatalog}>Task</div>
+          <div className={styles.tagCatalog} data-m='{\"id\":\"Task\",\"cN\":\"Tags Category\"}'>Task</div>
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={taskTag} number={"3"} activeTags={activeTags} />

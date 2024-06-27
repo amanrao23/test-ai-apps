@@ -34,6 +34,9 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
   const tags = user.tags;
   const title = user.title;
 
+  // Adobe Analytics Content
+  const contentForAdobeAnalytics = `{\"id\":\"${title}\",\"cN\":\"Templates\"}`;
+
   // Panel
   const [isOpen, { setTrue: openPanel, setFalse: dismissPanel }] =
     useBoolean(false);
@@ -66,6 +69,7 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
       className={styleCSS.card}
       appearance="filled"
       onClick={openPanel}
+      data-m={contentForAdobeAnalytics}
     >
       <div>
         <ThemeProvider>

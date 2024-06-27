@@ -24,15 +24,16 @@ function replaceSearchTags(search: string, newTags: TagType[]) {
 }
 
 export default function ShowcaseTagSelect(
-  // id: string,
   {
     label,
     tag,
     activeTags,
+    id
   }: {
     label: string;
     tag: TagType;
     activeTags: TagType[];
+    id: string;
   }
 ): JSX.Element {
   const location = useLocation();
@@ -42,6 +43,10 @@ export default function ShowcaseTagSelect(
     const tags = readSearchTags(location.search);
     setSelected(tags.includes(tag));
   }, [tag, location]);
+
+  // Adobe Analytics
+  const checkbox = id.replace("showcase_checkbox_id_", "")
+  const contentForAdobeAnalytics = `{\"id\":\"${checkbox}\",\"cN\":\"Tags\"}`
 
   const toggleTag = useCallback(() => {
     const tags = readSearchTags(location.search);
@@ -56,7 +61,8 @@ export default function ShowcaseTagSelect(
   return (
     <>
       <Checkbox
-        // id={id}
+        id={id}
+        data-m={contentForAdobeAnalytics}
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             toggleTag();
