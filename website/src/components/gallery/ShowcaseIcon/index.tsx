@@ -22,12 +22,10 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   const languageTags = tagObjectsSorted.filter((tag) =>
     tag.type == "Language");
   const uniqueOpenAITag = tagObjectsSorted.filter((tag) =>
-    tag.type == "Model" && tag.subType == openai).slice(0, 1);
+    tag.type == "Model" && tag.subType === openai).slice(0, 1);
   const uniqueMetaTag = tagObjectsSorted.filter((tag) =>
-    tag.type == "Model" && tag.subType == meta).slice(0, 1);
-  const azureTags = tagObjectsSorted.filter((tag) =>
-    tag.label.includes("Azure"));
-  const totalTags = [...languageTags, ...uniqueOpenAITag, ...uniqueMetaTag, ...azureTags];
+    tag.type == "Model" && tag.subType === meta).slice(0, 1);
+  const totalTags = [...languageTags, ...uniqueOpenAITag, ...uniqueMetaTag];
   const length = totalTags.length;
   let number = 3;
   const rest = length - number;

@@ -13,7 +13,7 @@ import {
   AccordionPanel,
   AccordionToggleEventHandler,
 } from "@fluentui/react-components";
-import { Tags, type TagType } from "../../../data/tags";
+import { Tags, type TagType, openai, meta } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -128,11 +128,11 @@ export default function ShowcaseLeftFilters({
   });
   const modelOpenAITag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Model" && tagObject.subType === "OpenAI";
+    return tagObject.type === "Model" && tagObject.subType === openai;
   });
   const modelMetaTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Model" && tagObject.subType === "Meta";
+    return tagObject.type === "Model" && tagObject.subType === meta;
   });
   const taskTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];

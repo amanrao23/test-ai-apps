@@ -78,7 +78,7 @@ export default function ShowcaseMultipleAuthors({ user }: { user: User }) {
   return (
     <>
       <div>by</div>
-      <Link className={styles.color} href={websites} target="_blank">
+      <Link className={styles.color} key={authors} href={websites} target="_blank">
         {authors}
       </Link>
     </>
