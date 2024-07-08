@@ -6,7 +6,7 @@
     "website": "https://github.com/Azure/azure-dev",
     "author": "Azure Dev",
     "source": "https://github.com/Azure-Samples/azd-starter-bicep",
-    "tags": ["featured", "javascript", "gpt35turbo", "dalle","llama","aca"]
+    "tags": ["featured", "javascript", "gpt35turbo", "dalle", "llama", "aca"]
   },
   {
     "title": "Starter - Terraform",
@@ -48,6 +48,57 @@
     "author": "Natalia Venditto, Natalia Venditto1, Natalia Venditto2",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": ["python", "chat", "gpt35turbo", "aca", "keyvault", "azuresql"],
-    "video":"https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
+    "video": "https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/contoso-chat"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/openai-plugin-fastapi"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/rag-postgres-openai-python"
+  },
+  {
+    "source": "https://github.com/Arize-ai/phoenix-on-azure"
+  },
+  {
+    "source": "https://github.com/Azure-Samples/llama-index-javascript"
   }
 ]

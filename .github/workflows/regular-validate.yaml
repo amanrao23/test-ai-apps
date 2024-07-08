@@ -13,6 +13,7 @@ on:
     - cron: '0 0 1 * *' # Runs at 00:00 UTC on the first day of every month
 
 permissions:
+  actions: read
   contents: read
   id-token: write
 
@@ -42,6 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         repo: ${{ fromJson(needs.setup.outputs.repositories) }}
+      max-parallel: 5
     name: ${{ matrix.repo }} 
     env:
       AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
@@ -90,12 +92,15 @@ jobs:
           GDN_TEMPLATEANALYZER_ANALYZEDIRECTORY: ${{ runner.temp }}/template
         with:
           tools: templateanalyzer
+        continue-on-error: true
       
       - name: Extract repo name
         id: extract_repo_name
         run: |
           repo_name=$(echo ${{ matrix.repo }} | sed -E 's|https://github.com/([^/]+/[^/]+).*|\1|')
+          repo_name_short=${repo_name##*/}
           echo "REPO_NAME=$repo_name" >> $GITHUB_OUTPUT
+          echo "REPO_NAME_SHORT=$repo_name_short" >> $GITHUB_OUTPUT
 
       - name: Get repository topics
         id: get_repo_topics
@@ -106,11 +111,14 @@ jobs:
           topics_list=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/${{ env.REPO_NAME }}/topics | jq -r '.names | join(",")')
           echo "topics=\"$topics_list\"" >> $GITHUB_ENV
       
-      - name: Set environment name with timestamp
+      - name: Set environment name with job id
         id: set_env_name
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          current_time=$(date +%m%d%H%M)
-          azure_env_name="${{ vars.AZURE_ENV_NAME }}-$current_time"
+          jobs=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id}}/attempts/${{ github.run_attempt }}/jobs)
+          job_id=$(echo $jobs | jq -r '.jobs[] | select(.runner_name=="${{ runner.name }}") | .id')
+          azure_env_name="${{ vars.AZURE_ENV_NAME }}-$job_id"
           echo "AZURE_ENV_NAME=$azure_env_name" >> $GITHUB_ENV
 
       - name: Log in with Azure (Federated Credentials)
@@ -129,19 +137,98 @@ jobs:
           AZURE_ENV_NAME: ${{ env.AZURE_ENV_NAME }}
           AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
           AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          CREATE_ROLE_FOR_USER: false
           CREATE_IN_LOCAL: false
           TOPICS: ${{ env.topics }}
 
-      - name: Create issue if failed
-        if: ${{ github.event.inputs.create_issue == 'true' }}
+      - name: Create or update issue if failed
+        if: github.event.inputs.create_issue == 'true'
         working-directory: ${{ runner.temp }}
+        run: |
+          repo="${{ matrix.repo }}"
+          issue_number=$(gh issue list --author "ai-apps-bot" --repo "$repo" --json number | jq -r '.[0].number')
+          if grep -q "FAILED" output.log; then
+            echo "Validation failed, creating issue"
+            if [ "null" == $issue_number ]; then
+              gh issue create --title "[Auto] AI Gallery Standard Validation FAILED" --body-file output.log --repo $repo
+            else
+              gh issue edit $issue_number --body-file output.log --repo $repo
+            fi
+          else
+            echo "Validation passed, close opened issue"
+            if [ "null" != $issue_number ]; then
+              gh issue close $issue_number --repo $repo
+            fi
+          fi
         env: 
           GITHUB_TOKEN: ${{ secrets.AI_APP_BOT_TOKEN }}
+
+      - name: Add repo name to output
         run: |
-          if grep -q "PASSED" output.log; then
-            echo "Validation passed"
+          echo -e "\n# Repo: ${{ steps.extract_repo_name.outputs.REPO_NAME }}\n" >> ${{ runner.temp }}/output.md
+          cat ${{ runner.temp }}/output.log >> ${{ runner.temp }}/output.md
+
+      - name: Upload output artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ steps.extract_repo_name.outputs.REPO_NAME_SHORT }}
+          path: ${{ runner.temp }}/output.md
+
+  merge-result:
+    needs:
+      - validate-templates
+      - setup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: merged-results
+
+      - name: Summarize
+        working-directory: merged-results
+        run: |
+          total=0
+          failed=0
+          failed_repos=""
+          for file in $(ls */output.md); do
+            total=$((total + 1))
+            if grep -q "FAILED" "$file"; then
+              failed=$((failed + 1))
+              folder=$(dirname "$file")
+              failed_repos="${failed_repos}\n${folder}"
+            fi
+          done
+          echo -e "# Validation Summary\n"
+          echo -e "Failed/Total: $failed/$total\nFailed Repos:${failed_repos}\n" >> summary.md
+          cat ./*/output.md >> summary.md
+
+      - name: Find existing issue
+        if: github.event.inputs.create_issue == 'true'
+        id: find-existing-issue
+        run: |
+          repo="${{ github.event.inputs.repository || github.repository }}"
+          issue_number=$(gh issue list --author "ai-apps-bot" --repo "$repo" --json number | jq -r '.[0].number')
+          echo "issue_number=$issue_number" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.AI_APP_BOT_TOKEN }}
+
+      - name: Create or update summary issue
+        if: github.event.inputs.create_issue == 'true'
+        working-directory: merged-results
+        run: |
+          repo="${{ github.event.inputs.repository || github.repository }}"
+          issue_number="${{ steps.find-existing-issue.outputs.issue_number }}"
+          if [ "null" == $issue_number ]; then
+            gh issue create --title "Templates Validation Summary" --body-file summary.md --repo $repo
           else
-            echo "Validation failed, creating issue"
-            input_repository=${{ github.event.inputs.repository }}
-            gh issue create --title "[Auto] AI Gallery Standard Validation FAILED" --body "$(cat output.log)" --repo "${input_repository:=${{ matrix.repo }}}"
+            gh issue edit $issue_number --body-file summary.md --repo $repo
           fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.AI_APP_BOT_TOKEN }}
+
+      - name: Upload merged results
+        uses: actions/upload-artifact@v4
+        with:
+          name: 0.merged-results
+          path: merged-results/summary.md
