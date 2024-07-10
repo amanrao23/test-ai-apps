@@ -51,54 +51,139 @@
     "video": "https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
   },
   {
-    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty"
+    "title": "Testing - Agent OpenAI Python Prompty",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/contoso-chat"
+    "title": "Testing - Contoso Chat",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/contoso-chat",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow"
+    "title": "Testing - Summarization OpenAI Python Promptflow",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain"
+    "title": "Testing - Agent Python OpenAI Prompty LangChain",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone"
+    "title": "Testing - Agent OpenAI Python Prompty LangChain Pinecone",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp"
+    "title": "Testing - Azure Search OpenAI Demo CSharp",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo"
+    "title": "Testing - Azure Search OpenAI Demo",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript"
+    "title": "Testing - Azure Search OpenAI Demo JavaScript",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java"
+    "title": "Testing - Azure Search OpenAI Demo Java",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs"
+    "title": "Testing - Serverless Chat LangChainJs",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript"
+    "title": "Testing - Azure OpenAI Assistant JavaScript",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend"
+    "title": "Testing - Azure OpenAI Chat Frontend",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/openai-plugin-fastapi"
+    "title": "Testing - OpenAI Plugin FastAPI",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/openai-plugin-fastapi",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart"
+    "title": "Testing - OpenAI Chat App Quick Start",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/rag-postgres-openai-python"
+    "title": "Testing - Rag Postgres OpenAI Python",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
+    "tags": []
   },
   {
-    "source": "https://github.com/Arize-ai/phoenix-on-azure"
+    "title": "Testing - Phoenix on Azure",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Arize-ai/phoenix-on-azure",
+    "tags": []
   },
   {
-    "source": "https://github.com/Azure-Samples/llama-index-javascript"
+    "title": "Testing - Llama Index JavaScript",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/llama-index-javascript",
+    "tags": []
   }
 ]

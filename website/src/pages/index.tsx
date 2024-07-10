@@ -10,7 +10,6 @@ import ShowcaseCoverPage from "../components/gallery/ShowcaseCoverPage";
 import { UserState } from "./ShowcaseCardPage";
 import {
   teamsLightTheme,
-  teamsDarkTheme,
   FluentProvider,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
@@ -49,7 +48,7 @@ const App = () => {
 
   return !loading ? (
     <FluentProvider
-      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
+      theme={teamsLightTheme}
     >
       <ShowcaseCoverPage />
       <div className={styles.filterAndCard}>

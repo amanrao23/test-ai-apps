@@ -11,7 +11,6 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import {
   Text,
   teamsLightTheme,
-  teamsDarkTheme,
   makeStyles,
   typographyStyles,
   FluentProvider,
@@ -79,10 +78,7 @@ const HomeApp = () => {
   }, []);
 
   return !loading ? (
-    <FluentProvider
-      theme={colorMode == "dark" ? teamsDarkTheme : teamsLightTheme}
-      className={styles.backgroundColor}
-    >
+    <FluentProvider theme={teamsLightTheme} className={styles.backgroundColor}>
       <div className={styles.container}>
         <HomepageHeader colorMode={colorMode} />
         <HomepageFeatures />
