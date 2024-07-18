@@ -1,7 +1,7 @@
 [
   {
     "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python)",
-    "description": "N/A",
+    "description": "A Flask app and multiple AI agents for research, product search, writing, and editing to produce articles.",
     "preview": "coming soon",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
@@ -74,7 +74,7 @@
   },
   {
     "title": "Contoso Chat Retail with .NET and Semantic Kernel",
-    "description": "Build, evaluate, and deploy, a retail copilot application end-to-end using Azure AI and Cosmos DB.",
+    "description": "A retail chat application that shows how to build, evaluate, and deploy, a retail copilot application end-to-end. ",
     "preview": "coming soon",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
@@ -100,7 +100,7 @@
   },
   {
     "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "coming soon",
+    "description": "A sample app for ChatGPT- style experiences powered by your own data using Retrieval-Augmented Generation (RAG) pattern.",
     "preview": "coming soon",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
@@ -125,14 +125,14 @@
   },
   {
     "title": "Contoso Chat Retail with Azure AI Studio and Promptflow",
-    "description": "coming soon",
+    "description": "A retail chat application that shows how to build, evaluate, and deploy, a retail copilot application end-to-end.",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
     "source": "coming soon"
   },
   {
     "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "coming soon",
+    "description": "A sample app for ChatGPT- style experiences powered by your own data using Retrieval-Augmented Generation (RAG) pattern.",
     "website": "https://github.com/Azure-Samples",
     "author": "Natalia Venditto, Yohan Lasorsa, Wassim Chegham",
     "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
@@ -224,7 +224,7 @@
   },
   {
     "title": "Phoenix on Azure",
-    "description": "Partnership with Arize. A notebook-first experience for monitoring your models and LLM Applications.",
+    "description": "A notebook-first experience for monitoring models and LLM applications for evaluations and LLM tuning.",
     "website": "",
     "author": "coming soon",
     "source": "https://github.com/Arize-ai/phoenix-on-azure",
@@ -232,7 +232,7 @@
   },
   {
     "title": "LlamaIndex - TypeScript Chat App",
-    "description": "coming soon",
+    "description": "A starting point for more complex Retrieval-Augmented-Generation (RAG) applications using LlamaIndex.ai and JavaScript.",
     "website": "",
     "author": "Wassim Chegham",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
@@ -240,7 +240,7 @@
   },
   {
     "title": "LlamaIndex - Python Chat App",
-    "description": "coming soon",
+    "description": "A starting point for more complex Retrieval-Augmented-Generation (RAG) applications using LlamaIndex.ai and Python.",
     "website": "",
     "author": "Marlene",
     "source": "https://github.com/Azure-Samples/llama-index-python",
