@@ -1,257 +1,189 @@
 [
   {
-    "title": "Creative Writing Assistant: Working with Agents using Promptflow (Python)",
+    "title": "Starter - Bicep",
+    "description": "A starter template with Bicep as infrastructure provider",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-starter-bicep",
+    "tags": ["featured", "javascript", "gpt35turbo", "dalle", "llama", "aca"]
+  },
+  {
+    "title": "Starter - Terraform",
+    "description": "A starter template with Terraform as infrastructure provider",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/azd-starter-terraform",
+    "tags": [
+      "featured",
+      "dotnetCsharp",
+      "aca",
+      "monitor",
+      "keyvault",
+      "azuresql"
+    ]
+  },
+  {
+    "title": "React Web App with C# API and MongoDB",
+    "description": "A starter template with Terraform as infrastructure provider",
+    "preview": "./templates/images/test.png",
+    "website": "https://github.com/Azure/azure-dev",
+    "author": "Azure Dev",
+    "source": "https://github.com/Azure-Samples/todo-csharp-cosmos-sql",
+    "tags": [
+      "featured",
+      "python",
+      "aca",
+      "monitor",
+      "keyvault",
+      "azuresql",
+      "functions"
+    ]
+  },
+  {
+    "title": "ChatGPT and Enterprise data with Azure OpenAI and Azure AI Search",
+    "description": "A chat app using Python, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about employee benefits at a fictitious company.",
+    "website": "https://learn.microsoft.com/en-us/azure/developer/python/get-started-app-chat-template?tabs=github-codespaces , https://github.com/Azure-Samples/azure-search-openai-demo1, https://github.com/Azure-Samples/azure-search-openai-demo2",
+    "author": "Natalia Venditto, Natalia Venditto1, Natalia Venditto2",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "tags": ["python", "chat", "gpt35turbo", "aca", "keyvault", "azuresql"],
+    "video": "https://www.youtube.com/embed/9z3PiHSCcYs?si=F1yKpoiOQnzb4o-K"
+  },
+  {
+    "title": "Testing - Agent OpenAI Python Prompty",
     "description": "N/A",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty",
-    "tags": [
-      "msft",
-      "python",
-      "openai",
-      "aks",
-      "terraform",
-      "ai",
-      "aisearch",
-      "prompty"
-    ]
+    "tags": []
   },
   {
-    "title": "Function Calling with Prompty, LangChain, and Elastic Search",
-    "description": "Function calling for vector database lookup based on user question",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
-    "tags": [
-      "msft",
-      "python",
-      "prompty",
-      "LangChain",
-      "ElasticSearch"
-    ]
-  }
-  {
-    "title": "Function Calling with Prompty, LangChain, and Pinecone",
-    "description": "Function calling for vector database lookup based on user question.",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author":"Azure Content Team",
-    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
-    "tags":[
-      "msft",
-      "python",
-      "prompty",
-      "LangChain",
-      "Pinecone"
-    ]
-  },
-  {
-    "title": "Assistant for sales data analytics in Python with Prompt Flow",
-    "description": "Assistant API to chat with tabular data and perform analytics in natural language.",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author":"Azure Content Team",
-    "source": "https://github.com/Azure-Samples/assistant-data-openai-python-promptflow",
-    "tags":[
-      "msft",
-      "python",
-      "promptflow"
-    ]
-  },
-  {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "coming soon",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author":"Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
-    "tags":[
-      "msft",
-      "AzureOpenAI"
-    ]
-  },
-  {
-    "title": "Contoso Chat Retail with .NET and Semantic Kernel",
-    "description": "Build, evaluate, and deploy, a retail copilot application end-to-end using Azure AI and Cosmos DB.",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "title": "Testing - Contoso Chat",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/contoso-chat",
     "tags": []
   },
   {
-    "title": "Process Automation: Speech to Text and Summarization with AI Studio",
-    "description": "This solution converts speech to text and then processes and summarizes the text based on the prompt scenario.",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "title": "Testing - Summarization OpenAI Python Promptflow",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/summarization-openai-python-promptflow",
-    "tags": [
-      "msft",
-      "build2024",
-      "python",
-      "openai",
-      "aca",
-      "bicep",
-      "ai"
-    ]
-  },
-  {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "coming soon",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
-    "tags": [
-      "msft",
-      "build2024",
-      "python",
-      "openai",
-      "aca",
-      "bicep",
-      "ai"
-    ]
-  },
-  {
-    "title": "Automated Ticket Processing using Azure AI",
-    "description": "This solution converts speech to text and then processes and summarizes the text based on the prompt scenario.",
-    "website": "https://github.com/Azure-Samples",
-    "author":"Azure Content Team",
-    "source": "https://github.com/Azure-Samples/summarization-openai-csharp-prompty",
     "tags": []
   },
   {
-    "title": "Contoso Chat Retail with Azure AI Studio and Promptflow",
-    "description": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "coming soon"
+    "title": "Testing - Agent Python OpenAI Prompty LangChain",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/agent-python-openai-prompty-langchain",
+    "tags": []
   },
   {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Natalia Venditto, Yohan Lasorsa, Wassim Chegham",
+    "title": "Testing - Agent OpenAI Python Prompty LangChain Pinecone",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
+    "tags": []
+  },
+  {
+    "title": "Testing - Azure Search OpenAI Demo CSharp",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo-csharp",
+    "tags": []
+  },
+  {
+    "title": "Testing - Azure Search OpenAI Demo",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
+    "tags": []
+  },
+  {
+    "title": "Testing - Azure Search OpenAI Demo JavaScript",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
-    "tags": [
-      "javascript",
-      "LangChain"
-    ]
+    "tags": []
   },
   {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
-    "description": "This sample implements a chat app using Java, Azure OpenAI Service, and Retrieval Augmented Generation (RAG) in Azure AI Search to get answers about employee benefits at a fictitious company. (existing azd template - https://aka.ms/azai/java)",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "title": "Testing - Azure Search OpenAI Demo Java",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo-java",
-    "tags": [
-      "java"
-    ]
+    "tags": []
   },
   {
-    "title": "Serverless ChatGPT with RAG using LangChain.js",
-    "description": "A Serverless ChatGPT-like experience with Retrieval-Augmented Generation using LangChain.js, TypeScript and Azure",
-    "preview": "./templates/images/serverless-chat-langchainjs.gif",
-    "website": "https://github.com/glaucia86, https://github.com/sinedied",
-    "author": "Glaucia Lemos, Yohan Lasorsa",
+    "title": "Testing - Serverless Chat LangChainJs",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/serverless-chat-langchainjs",
-    "tags": [
-      "ai",
-      "bicep",
-      "gpt",
-      "serverlessapi",
-      "javascript",
-      "nodejs",
-      "openai",
-      "typescript",
-      "webcomponents",
-      "cosmosdb",
-      "msft",
-      "langchain",
-      "functions",
-      "swa",
-      "azureai"
-    ]
+    "tags": []
   },
   {
-    "title": "Azure OpenAI Chat Frontend",
-    "description": "The Chat App Protocol compliant user-interface building block, for your chat-gpt like RAG pattern applications built with Azure OpenAI and Azure AI Search.",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend/s",
-    "tags": [
-      "ai"
-    ]
-  },
-  {
-    "title": "ChatGPT Plugin running in Codespaces",
-    "description": "A simple ChatGPT Plugin running in Codespaces for dev and Azure for production.",
-    "preview": "coming soon",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
-    "source": "https://github.com/Azure-Samples/openai-plugin-fastapi",
-    "tags": [
-      "ai"
-    ]
-  },
-  {
-    "title": "Serverless Azure OpenAI Assistant Quick Start with Function Calling",
-    "description": "A sample application using the Assistant API as a Finance tutor.",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "title": "Testing - Azure OpenAI Assistant JavaScript",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/azure-openai-assistant-javascript",
     "tags": []
   },
   {
-    "title": "OpenAI Chat App Quick Start",
-    "description": "Build a chat application using Azure OpenAI GPT models.",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "title": "Testing - Azure OpenAI Chat Frontend",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/azure-openai-chat-frontend",
+    "tags": []
+  },
+  {
+    "title": "Testing - OpenAI Plugin FastAPI",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
+    "source": "https://github.com/Azure-Samples/openai-plugin-fastapi",
+    "tags": []
+  },
+  {
+    "title": "Testing - OpenAI Chat App Quick Start",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/openai-chat-app-quickstart",
     "tags": []
   },
   {
-    "title": "RAG Chat on structured data (PostgreSQL)",
-    "description": "A RAG app to ask questions about rows in a database table. Deployable on Azure Container Apps with PostgreSQL Flexible Server.",
-    "website": "https://github.com/Azure-Samples",
-    "author": "Azure Content Team",
+    "title": "Testing - Rag Postgres OpenAI Python",
+    "description": "N/A",
+    "website": "",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/rag-postgres-openai-python",
     "tags": []
   },
   {
-    "title": "Phoenix on Azure",
-    "description": "Partnership with Arize. A notebook-first experience for monitoring your models and LLM Applications.",
+    "title": "Testing - Phoenix on Azure",
+    "description": "N/A",
     "website": "",
-    "author": "coming soon",
+    "author": "N/A - Testing",
     "source": "https://github.com/Arize-ai/phoenix-on-azure",
     "tags": []
   },
   {
-    "title": "LlamaIndex - TypeScript Chat App",
-    "description": "coming soon",
+    "title": "Testing - Llama Index JavaScript",
+    "description": "N/A",
     "website": "",
-    "author": "Wassim Chegham",
+    "author": "N/A - Testing",
     "source": "https://github.com/Azure-Samples/llama-index-javascript",
-    "tags": []
-  },
-  {
-    "title": "LlamaIndex - Python Chat App",
-    "description": "coming soon",
-    "website": "",
-    "author": "Marlene",
-    "source": "https://github.com/Azure-Samples/llama-index-python",
-    "tags": []
-  },
-  {
-    "title": "Pinecone Canopy",
-    "description": "coming soon",
-    "website": "",
-    "author": "coming soon",
-    "source": "https://github.com/cwaddingham/canopy/tree/create-azd-template",
     "tags": []
   }
 ]
