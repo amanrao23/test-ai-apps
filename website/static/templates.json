@@ -31,7 +31,7 @@
       "LangChain",
       "ElasticSearch"
     ]
-  }
+  },
   {
     "title": "Function Calling with Prompty, LangChain, and Pinecone",
     "description": "Function calling for vector database lookup based on user question.",
