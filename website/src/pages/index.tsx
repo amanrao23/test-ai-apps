@@ -7,7 +7,7 @@ import React, { useState, useEffect } from "react";
 import Layout from "@theme/Layout";
 import ShowcaseLeftFilters from "../components/gallery/ShowcaseLeftFilters";
 import ShowcaseCoverPage from "../components/gallery/ShowcaseCoverPage";
-import { UserState } from "./ShowcaseCardPage";
+import ShowcaseCardPage, { UserState } from "./ShowcaseCardPage";
 import {
   teamsLightTheme,
   FluentProvider,
@@ -16,10 +16,9 @@ import { initializeIcons } from "@fluentui/react/lib/Icons";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
 import styles from "./styles.module.css";
-import { useColorMode } from "@docusaurus/theme-common";
-import ShowcaseCardPage from "./ShowcaseCardPage";
 import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/users";
+import { useLocation } from "@docusaurus/router";
 
 initializeIcons();
 
@@ -34,29 +33,59 @@ export function prepareUserState(): UserState | undefined {
   return undefined;
 }
 
+const TagQueryStringKey = "tags";
+const readSearchTags = (search: string): TagType[] => {
+  return new URLSearchParams(search).getAll(TagQueryStringKey) as TagType[];
+};
+const replaceSearchTags = (search: string, newTags: TagType[]) => {
+  const searchParams = new URLSearchParams(search);
+  searchParams.delete(TagQueryStringKey);
+  newTags.forEach((tag) => searchParams.append(TagQueryStringKey, tag));
+  return searchParams.toString();
+};
+
 const App = () => {
-  const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
+  const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
+  const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
+  const location = useLocation<UserState>();
+  const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
 
   useEffect(() => {
+    setSelectedTags(readSearchTags(location.search));
+    setSelectedCheckbox(readSearchTags(location.search));
     setTimeout(() => {
       setLoading(false);
     }, 500);
-  }, []);
+  }, [location]);
 
-  const [activeTags, setActiveTags] = useState<TagType[]>(TagList);
 
   return !loading ? (
-    <FluentProvider
-      theme={teamsLightTheme}
-    >
+    <FluentProvider theme={teamsLightTheme}>
       <ShowcaseCoverPage />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>
-          <ShowcaseLeftFilters activeTags={activeTags} />
+          <ShowcaseLeftFilters
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            setSelectedTags={setSelectedTags}
+            selectedTags={selectedTags}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </div>
         <div className={styles.card}>
-          <ShowcaseCardPage setActiveTags={setActiveTags} />
+          <ShowcaseCardPage
+            setActiveTags={setActiveTags}
+            selectedTags={selectedTags}
+            location={location}
+            setSelectedTags={setSelectedTags}
+            setSelectedCheckbox={setSelectedCheckbox}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </div>
       </div>
     </FluentProvider>

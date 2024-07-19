@@ -140,6 +140,18 @@
   gap: 5px;
 }
 
+.filterAppliedBar {
+  padding-bottom: 24px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.clearAll {
+  color: #0f6cbd;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 996px) {
   .filterAndCard {
     flex-direction: column;

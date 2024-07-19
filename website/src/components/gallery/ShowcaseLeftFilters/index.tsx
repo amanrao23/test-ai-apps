@@ -17,15 +17,27 @@ import { Tags, type TagType, openai, meta } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
+import { useHistory } from "@docusaurus/router";
+import { prepareUserState } from "@site/src/pages/index";
 
 function ShowcaseFilterViewAll({
   tags,
   number,
   activeTags,
+  selectedCheckbox,
+  setSelectedCheckbox,
+  location,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   tags: TagType[];
   number: string;
   activeTags: TagType[];
+  selectedCheckbox: TagType[];
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
+  location;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
   const [openItems, setOpenItems] = React.useState(["0"]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
@@ -64,11 +76,31 @@ function ShowcaseFilterViewAll({
             className={styles.checkboxListItem}
             style={{ marginBottom: "7px" }}
           >
-            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} activeTags={activeTags} />
+            <ShowcaseTagSelect
+              id={id}
+              tag={tag}
+              label={tagObject.label}
+              activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
           </div>
         ) : (
           <div key={key} className={styles.checkboxListItem}>
-            <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} activeTags={activeTags} />
+            <ShowcaseTagSelect
+              id={id}
+              tag={tag}
+              label={tagObject.label}
+              activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
           </div>
         );
       })}
@@ -88,7 +120,17 @@ function ShowcaseFilterViewAll({
 
                 return (
                   <div key={key} className={styles.checkboxListItem}>
-                    <ShowcaseTagSelect id={id} tag={tag} label={tagObject.label} activeTags={activeTags} />
+                    <ShowcaseTagSelect
+                      id={id}
+                      tag={tag}
+                      label={tagObject.label}
+                      activeTags={activeTags}
+                      selectedCheckbox={selectedCheckbox}
+                      setSelectedCheckbox={setSelectedCheckbox}
+                      location={location}
+                      readSearchTags={readSearchTags}
+                      replaceSearchTags={replaceSearchTags}
+                    />
                   </div>
                 );
               })}
@@ -118,8 +160,22 @@ function ShowcaseFilterViewAll({
 
 export default function ShowcaseLeftFilters({
   activeTags,
+  selectedCheckbox,
+  setSelectedCheckbox,
+  location,
+  selectedTags,
+  setSelectedTags,
+  readSearchTags,
+  replaceSearchTags,
 }: {
   activeTags: TagType[];
+  selectedCheckbox: TagType[];
+  setSelectedCheckbox: React.Dispatch<React.SetStateAction<TagType[]>>;
+  location;
+  selectedTags: TagType[];
+  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
+  readSearchTags: (search: string) => TagType[];
+  replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
   const sortTagList = TagList.sort();
   const languageTag = sortTagList.filter((tag) => {
@@ -165,7 +221,16 @@ export default function ShowcaseLeftFilters({
           <div className={styles.tagCatalog} data-m='{\"id\":\"Language\",\"cN\":\"Tags Category\"}'>Language</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={languageTag} number={"1"} activeTags={activeTags} />
+          <ShowcaseFilterViewAll
+            tags={languageTag}
+            number={"1"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="2">
@@ -174,11 +239,29 @@ export default function ShowcaseLeftFilters({
         </AccordionHeader>
         <AccordionPanel>
           <div className={styles.tagSubCatalog} data-m='{\"id\":\"OpenAI\",\"cN\":\"Tags Sub Category\"}'>OpenAI</div>
-          <ShowcaseFilterViewAll tags={modelOpenAITag} number={"21"} activeTags={activeTags} />
+          <ShowcaseFilterViewAll
+            tags={modelOpenAITag}
+            number={"21"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </AccordionPanel>
         <AccordionPanel>
           <div className={styles.tagSubCatalog} data-m='{\"id\":\"Meta\",\"cN\":\"Tags Sub Category\"}'>Meta</div>
-          <ShowcaseFilterViewAll tags={modelMetaTag} number={"22"} activeTags={activeTags} />
+          <ShowcaseFilterViewAll
+            tags={modelMetaTag}
+            number={"22"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="3">
@@ -186,7 +269,16 @@ export default function ShowcaseLeftFilters({
           <div className={styles.tagCatalog} data-m='{\"id\":\"Intelligent Solution\",\"cN\":\"Tags Category\"}'>Intelligent Solution</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={intelligentSolutionTag} number={"3"} activeTags={activeTags} />
+          <ShowcaseFilterViewAll
+            tags={intelligentSolutionTag}
+            number={"3"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="4">
@@ -194,7 +286,16 @@ export default function ShowcaseLeftFilters({
           <div className={styles.tagCatalog} data-m='{\"id\":\"Database\",\"cN\":\"Tags Category\"}'>Database</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={databaseTag} number={"4"} activeTags={activeTags} />
+          <ShowcaseFilterViewAll
+            tags={databaseTag}
+            number={"4"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>
