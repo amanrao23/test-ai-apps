@@ -128,7 +128,8 @@
     "description": "A retail chat application that shows how to build, evaluate, and deploy, a retail copilot application end-to-end.",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",
-    "source": "coming soon"
+    "source": "coming soon",
+    "tags": []
   },
   {
     "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
