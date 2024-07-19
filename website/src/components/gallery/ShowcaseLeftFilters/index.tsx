@@ -134,9 +134,9 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     return tagObject.type === "Model" && tagObject.subType === meta;
   });
-  const taskTag = sortTagList.filter((tag) => {
+  const intelligentSolutionTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
-    return tagObject.type === "Task";
+    return tagObject.type === "Intelligent Solution";
   });
   const databaseTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
@@ -183,10 +183,10 @@ export default function ShowcaseLeftFilters({
       </AccordionItem>
       <AccordionItem value="3">
         <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
-          <div className={styles.tagCatalog} data-m='{\"id\":\"Task\",\"cN\":\"Tags Category\"}'>Task</div>
+          <div className={styles.tagCatalog} data-m='{\"id\":\"Intelligent Solution\",\"cN\":\"Tags Category\"}'>Intelligent Solution</div>
         </AccordionHeader>
         <AccordionPanel>
-          <ShowcaseFilterViewAll tags={taskTag} number={"3"} activeTags={activeTags} />
+          <ShowcaseFilterViewAll tags={intelligentSolutionTag} number={"3"} activeTags={activeTags} />
         </AccordionPanel>
       </AccordionItem>
       <AccordionItem value="4">

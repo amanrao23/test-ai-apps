@@ -28,13 +28,13 @@ export default function ShowcaseCardTag({
     (tag) => tag.type === "Language"
   );
   const modelTags = tagObjectsSorted.filter((tag) => tag.type === "Model");
-  const taskTags = tagObjectsSorted.filter((tag) => tag.type === "Task");
+  const intelligentSolutionTags = tagObjectsSorted.filter((tag) => tag.type === "Intelligent Solution");
   const azureTags = tagObjectsSorted.filter((tag) => tag.type === "Azure");
   const databaseTags = tagObjectsSorted.filter((tag) => tag.type === "Database");
   const tagsByTypeSorted = [
     ...languageTags,
     ...modelTags,
-    ...taskTags,
+    ...intelligentSolutionTags,
     ...azureTags,
     ...databaseTags,
   ];

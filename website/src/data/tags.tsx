@@ -45,22 +45,23 @@ export type TagType =
   | "dotnetCsharp"
   | "java"
   | "python"
+  | "typescript"
   | "dalle"
   | "gpt35turbo"
+  | "gpt4turbo"
   | "gpt4"
   | "llama"
   | "llama2"
+  | "agent"
   | "chat"
   | "search"
-  | "speechtotext"
-  | "functions"
-  | "aca"
-  | "monitor"
-  | "keyvault"
-  | "azuresql"
+  | "llmops"
+  | "summarization"
   | "azuredb-postgreSQL"
   | "mongodb"
-  | "pinecone";
+  | "pinecone"
+  | "azuresql"
+  | "azurecosmosdb";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -105,6 +106,12 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Language",
     icon: "./img/python.svg",
   },
+  typescript: {
+    label: "TypeScript",
+    description: "Template contains TypeScript app code",
+    type: "Language",
+    icon: "./img/typescript.svg",
+  },
 
   // Model Tags
   dalle: {
@@ -119,8 +126,14 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Model",
     subType: openai,
   },
-  gpt4: {
+  gpt4turbo: {
     label: "GPT 4 Turbo",
+    description: "Template use OpenAI GPT 4 Turbo model",
+    type: "Model",
+    subType: openai,
+  },
+  gpt4: {
+    label: "GPT 4",
     description: "Template use OpenAI GPT 4 model",
     type: "Model",
     subType: openai,
@@ -138,51 +151,31 @@ export const Tags: { [type in TagType]: Tag } = {
     subType: meta,
   },
 
-  // Task Tags
+  // Intelligent Solution Tags
+  agent: { 
+    label: "Agent",
+    description: "Template implements copilot that uses agent(s)",
+    type: "Intelligent Solution",  
+  },
   chat: {
-    label: "Chat",
-    description: "Template about chat task",
-    type: "Task",
+    label: "Interactive Chat",
+    description: "Template implements interactive chat",
+    type: "Intelligent Solution",
   },
   search: {
-    label: "Search",
-    description: "Template about search task",
-    type: "Task",
+    label: "Guided Search",
+    description: "Template implements guided search",
+    type: "Intelligent Solution",
   },
-  speechtotext: {
-    label: "Speech to Text",
-    description: "Template about speech to text task",
-    type: "Task",
+  llmops: {
+    label: "LLM Ops",
+    description: "Template involves LLM Operations",
+    type: "Intelligent Solution",
   },
-
-  // Azure Tags
-  functions: {
-    label: "Azure Functions",
-    description: "Template architecture uses Azure Functions",
-    icon: "./img/Azure-Function.svg",
-    url: "https://azure.microsoft.com/products/functions",
-    type: "Azure",
-  },
-  aca: {
-    label: "Azure Container Apps",
-    description: "Template architecture uses Azure Container Apps",
-    icon: "./img/Azure-Container-Apps.svg",
-    url: "https://azure.microsoft.com/products/container-apps",
-    type: "Azure",
-  },
-  monitor: {
-    label: "Azure Monitor",
-    description: "Template architecture uses Azure Monitor Service",
-    icon: "./img/Azure-Monitor.svg",
-    url: "https://azure.microsoft.com/products/monitor",
-    type: "Azure",
-  },
-  keyvault: {
-    label: "Azure Key Vault",
-    description: "Template architecture uses Azure Key Vault",
-    icon: "./img/Azure-Key-Vault.svg",
-    url: "https://azure.microsoft.com/products/key-vault",
-    type: "Azure",
+  summarization: {
+    label: "Summarization",
+    description: "Template involves summarization and / or augmentation",
+    type: "Intelligent Solution",
   },
 
   // Database Tags
@@ -210,4 +203,11 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/azure-sql/database",
     type: "Database",
   },
+  azurecosmosdb: {
+    label: "Azure CosmosDB",
+    description: "Template architecture uses Azure CosmosDB",
+    icon: "./img/Azure-Cosmos-DB.svg",
+    url: "https://azure.microsoft.com/products/cosmos-db/",
+    type: "Database",
+  }
 };
