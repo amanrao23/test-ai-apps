@@ -138,10 +138,15 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     return tagObject.type === "Task";
   });
+  const databaseTag = sortTagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Database";
+  });
   const [openItems, setOpenItems] = React.useState([
     "1",
     "2",
-    "3"
+    "3",
+    "4"
   ]);
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
@@ -182,6 +187,14 @@ export default function ShowcaseLeftFilters({
         </AccordionHeader>
         <AccordionPanel>
           <ShowcaseFilterViewAll tags={taskTag} number={"3"} activeTags={activeTags} />
+        </AccordionPanel>
+      </AccordionItem>
+      <AccordionItem value="4">
+        <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
+          <div className={styles.tagCatalog} data-m='{\"id\":\"Database\",\"cN\":\"Tags Category\"}'>Database</div>
+        </AccordionHeader>
+        <AccordionPanel>
+          <ShowcaseFilterViewAll tags={databaseTag} number={"4"} activeTags={activeTags} />
         </AccordionPanel>
       </AccordionItem>
     </Accordion>

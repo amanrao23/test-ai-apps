@@ -57,7 +57,10 @@ export type TagType =
   | "aca"
   | "monitor"
   | "keyvault"
-  | "azuresql";
+  | "azuresql"
+  | "azuredb-postgreSQL"
+  | "mongodb"
+  | "pinecone";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -102,6 +105,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Language",
     icon: "./img/python.svg",
   },
+
+  // Model Tags
   dalle: {
     label: "Dalle",
     description: "Template use OpenAI Dalle model",
@@ -132,6 +137,8 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Model",
     subType: meta,
   },
+
+  // Task Tags
   chat: {
     label: "Chat",
     description: "Template about chat task",
@@ -147,6 +154,8 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template about speech to text task",
     type: "Task",
   },
+
+  // Azure Tags
   functions: {
     label: "Azure Functions",
     description: "Template architecture uses Azure Functions",
@@ -175,11 +184,30 @@ export const Tags: { [type in TagType]: Tag } = {
     url: "https://azure.microsoft.com/products/key-vault",
     type: "Azure",
   },
+
+  // Database Tags
+  "azuredb-postgreSQL": {
+    label: "Azure PostgreSQL",
+    description: "Template architecture uses Azure PostgreSQL Database",
+    icon: "./img/Azure-PostgreSQL.svg",
+    url: "https://azure.microsoft.com/products/postgresql",
+    type: "Database",
+  },
+  mongodb: {
+    label: "MongoDB",
+    description: "Template architecture uses MongoDB Database",
+    type: "Database",
+  },
+  pinecone: {
+    label: "Pinecone",
+    description: "Template architecture uses Pinecone Database",
+    type: "Database",
+  },
   azuresql: {
     label: "Azure SQL",
-    description: "Template architecture uses Azure SQL",
+    description: "Template architecture uses Azure SQL Database",
     icon: "./img/Azure-SQL.svg",
     url: "https://azure.microsoft.com/products/azure-sql/database",
-    type: "Azure",
+    type: "Database",
   },
 };
