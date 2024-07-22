@@ -53,7 +53,7 @@ export default function ShowcaseCardPanel({
           cardPanel={true}
         />
       </div>
-      <MessageBar
+      {user.previewTags ? <MessageBar
         messageBarType={MessageBarType.severeWarning}
         isMultiline={false}
       >
@@ -61,7 +61,7 @@ export default function ShowcaseCardPanel({
         <Link href="www.bing.com" target="_blank" underline>
           Learn more
         </Link>
-      </MessageBar>
+      </MessageBar> : null}
       <div className={styles.subTitle}>Template overview</div>
       <div className={styles.text}>{description}</div>
       {video ? <div className={styles.video}>

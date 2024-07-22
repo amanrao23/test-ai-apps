@@ -21,6 +21,7 @@ export type User = {
   source: string | null;
   tags: TagType[];
   video?: string;
+  previewTags?: TagType[];
 };
 
 type SubType = {
@@ -36,6 +37,17 @@ export const openai: SubType = {
 export const meta: SubType = {
   label: "Meta",
   icon: "./img/meta.svg",
+}
+
+// TODO add icon
+export const microsoft: SubType = {
+  label: "Microsoft",
+  icon: "",
+};
+
+export const mistralai: SubType = {
+  label: "Mistral AI",
+  icon: "",
 };
 
 // NN: Updated TagType to suit Static Web Apps
@@ -61,7 +73,12 @@ export type TagType =
   | "mongodb"
   | "pinecone"
   | "azuresql"
-  | "azurecosmosdb";
+  | "azurecosmosdb"
+  | "phi2"
+  | "orca2"
+  | "mistral7b"
+  | "mistral8*7b"
+  | "embedding-ada";
 
 // LIST OF AVAILABLE TAGS
 // Each tag in lit about must have a defined object here
@@ -143,6 +160,12 @@ export const Tags: { [type in TagType]: Tag } = {
     subType: openai,
     url: "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4",
   },
+  "embedding-ada": {
+    label: "Embedding-ada",
+    description: "Template use OpenAI Embedding-ada model",
+    type: "Model",
+    subType: openai,
+  },
   llama: {
     label: "Code Llama",
     description: "Template use Meta Code Llama model",
@@ -156,6 +179,30 @@ export const Tags: { [type in TagType]: Tag } = {
     type: "Model",
     subType: meta,
     url: "https://llama.meta.com/docs/model-cards-and-prompt-formats/meta-llama-2",
+  },
+  phi2: {
+    label: "Phi 2",
+    description: "Template use Microsoft Phi 2 model",
+    type: "Model",
+    subType: microsoft,
+  },
+  orca2: {
+    label: "Orca 2",
+    description: "Template use Microsoft Orca 2 model",
+    type: "Model",
+    subType: microsoft,
+  },
+  mistral7b: {
+    label: "Mistral 7b",
+    description: "Template use Mistral AI Mistral 7b model",
+    type: "Model",
+    subType: mistralai,
+  },
+  "mistral8*7b": {
+    label: "Mixtral 8x7B",
+    description: "Template use Mistral AI Mixtral 8x7B model",
+    type: "Model",
+    subType: mistralai,
   },
 
   // Intelligent Solution Tags

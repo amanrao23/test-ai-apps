@@ -14,7 +14,7 @@ import {
   AccordionToggleEventHandler,
   Title3,
 } from "@fluentui/react-components";
-import { Tags, type TagType, openai, meta } from "../../../data/tags";
+import { Tags, type TagType, openai, meta, microsoft, mistralai } from "../../../data/tags";
 import { TagList } from "../../../data/users";
 import styles from "./styles.module.css";
 import { useColorMode } from "@docusaurus/theme-common";
@@ -179,6 +179,15 @@ export default function ShowcaseLeftFilters({
     const tagObject = Tags[tag];
     return tagObject.type === "Model" && tagObject.subType === meta;
   });
+  const modelMicrosoftTag = sortTagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Model" && tagObject.subType === microsoft;
+  });
+  const modelMistralAITag = sortTagList.filter((tag) => {
+    const tagObject = Tags[tag];
+    return tagObject.type === "Model" && tagObject.subType === mistralai;
+  });
+  
   const intelligentSolutionTag = sortTagList.filter((tag) => {
     const tagObject = Tags[tag];
     return tagObject.type === "Intelligent Solution";
@@ -246,6 +255,32 @@ export default function ShowcaseLeftFilters({
           <ShowcaseFilterViewAll
             tags={modelMetaTag}
             number={"22"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
+        </AccordionPanel>
+        <AccordionPanel>
+          <div className={styles.tagSubCatalog} data-m='{\"id\":\"Microsoft\",\"cN\":\"Tags Sub Category\"}'>Microsoft</div>
+          <ShowcaseFilterViewAll
+            tags={modelMicrosoftTag}
+            number={"23"}
+            activeTags={activeTags}
+            selectedCheckbox={selectedCheckbox}
+            setSelectedCheckbox={setSelectedCheckbox}
+            location={location}
+            readSearchTags={readSearchTags}
+            replaceSearchTags={replaceSearchTags}
+          />
+        </AccordionPanel>
+        <AccordionPanel>
+          <div className={styles.tagSubCatalog} data-m='{\"id\":\"MistralAI\",\"cN\":\"Tags Sub Category\"}'>Mistral AI</div>
+          <ShowcaseFilterViewAll
+            tags={modelMistralAITag}
+            number={"24"}
             activeTags={activeTags}
             selectedCheckbox={selectedCheckbox}
             setSelectedCheckbox={setSelectedCheckbox}

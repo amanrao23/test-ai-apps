@@ -10,7 +10,7 @@ import { TagList } from "../../../data/users";
 import { sortBy } from "@site/src/utils/jsUtils";
 import { Tooltip, Image, Button } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { openai, meta } from "../../../data/tags";
+import { openai, meta, microsoft, mistralai } from "../../../data/tags";
 
 export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   const tagObjects = tags
@@ -25,7 +25,11 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
     tag.type == "Model" && tag.subType === openai).slice(0, 1);
   const uniqueMetaTag = tagObjectsSorted.filter((tag) =>
     tag.type == "Model" && tag.subType === meta).slice(0, 1);
-  const totalTags = [...languageTags, ...uniqueOpenAITag, ...uniqueMetaTag];
+  const uniqueMicrosoftTag = tagObjectsSorted.filter((tag) =>
+    tag.type == "Model" && tag.subType === microsoft).slice(0, 1);
+  const uniqueMistralAITag = tagObjectsSorted.filter((tag) =>
+    tag.type == "Model" && tag.subType === mistralai).slice(0, 1);
+  const totalTags = [...languageTags, ...uniqueOpenAITag, ...uniqueMetaTag, ...uniqueMicrosoftTag, ...uniqueMistralAITag];
   const length = totalTags.length;
   let number = 3;
   const rest = length - number;
