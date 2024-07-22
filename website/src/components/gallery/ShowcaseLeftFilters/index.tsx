@@ -12,6 +12,7 @@ import {
   AccordionItem,
   AccordionPanel,
   AccordionToggleEventHandler,
+  Title3,
 } from "@fluentui/react-components";
 import { Tags, type TagType, openai, meta } from "../../../data/tags";
 import { TagList } from "../../../data/users";
@@ -43,25 +44,13 @@ function ShowcaseFilterViewAll({
   const handleToggle: AccordionToggleEventHandler<string> = (event, data) => {
     setOpenItems(data.openItems);
   };
-  const { colorMode } = useColorMode();
-  const chevronDownSmall =
-    colorMode != "dark" ? (
-      <img src={useBaseUrl("/img/smallChevron.svg")} />
-    ) : (
-      <img src={useBaseUrl("/img/smallChevronDark.svg")} />
-    );
+  const chevronDownSmall = <img src={useBaseUrl("/img/smallChevron.svg")} />;
   const chevronUpSmall =
-    colorMode != "dark" ? (
-      <img
-        style={{ transform: "rotate(180deg)" }}
-        src={useBaseUrl("/img/smallChevron.svg")}
-      />
-    ) : (
-      <img
-        style={{ transform: "rotate(180deg)" }}
-        src={useBaseUrl("/img/smallChevronDark.svg")}
-      />
-    );
+    <img
+      style={{ transform: "rotate(180deg)" }
+      }
+      src={useBaseUrl("/img/smallChevron.svg")}
+    />;
   let value = number + "2";
   return (
     <>
@@ -215,9 +204,11 @@ export default function ShowcaseLeftFilters({
       multiple
       collapsible
     >
-      <div className={styles.filterby}>Filter by</div>
+      <div className={styles.filterBy}>
+        <Title3>Filter by</Title3>
+      </div>
       <AccordionItem value="1">
-        <AccordionHeader expandIconPosition="end" className={styles.tagCatalogBackground}>
+        <AccordionHeader expandIconPosition="end">
           <div className={styles.tagCatalog} data-m='{\"id\":\"Language\",\"cN\":\"Tags Category\"}'>Language</div>
         </AccordionHeader>
         <AccordionPanel>

@@ -31,7 +31,7 @@ export default function ShowcaseCards({
               {((len < 6 && index === len - 1) || index === 4) && !coverPage ? (
                 <React.Fragment key="cardWithSurveyCard">
                   <React.Fragment key={user.title}>
-                    <ShowcaseCard user={user} />
+                    <ShowcaseCard user={user} coverPage={coverPage} />
                   </React.Fragment>
                   <React.Fragment key="fragment_surveyCard">
                     <ShowcaseSurveyCard />
@@ -39,7 +39,7 @@ export default function ShowcaseCards({
                 </React.Fragment>
               ) : (
                 <React.Fragment key={user.title}>
-                  <ShowcaseCard user={user} />
+                  <ShowcaseCard user={user} coverPage={coverPage} />
                 </React.Fragment>
               )}
             </React.Fragment>

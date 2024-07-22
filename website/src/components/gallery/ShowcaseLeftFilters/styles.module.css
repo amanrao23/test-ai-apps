@@ -12,20 +12,19 @@
   margin-right: 0;
 }
 
-.filterby {
-  font-size: 20px;
-  font-weight: 500;
-  padding: 0 0 15px 12px;
-  padding-bottom: 7px;
+.filterBy {
+  padding: 0 0 24px 12px;
 }
 
 .tagCatalog {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
+  color: #242424;
+  line-height: 22px;
 }
 
 .tagCatalogBackground {
-  background: linear-gradient(#D1D1D1 0 0) top /89.8% 0.6px no-repeat;
+  background: linear-gradient(#d1d1d1 0 0) top / 89.8% 0.6px no-repeat;
 }
 
 .tagSubCatalog {

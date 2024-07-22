@@ -16,6 +16,7 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #242424;
+  --ifm-footer-background-color: #FFFFFF;
 }
 
 /* For readability - FIXME: is there a better way to handle it? */
@@ -24,4 +25,10 @@
   display: block;
   margin: 0 calc(-1 * var(--ifm-pre-padding));
   padding: 0 var(--ifm-pre-padding);
+}
+
+.navbar {
+  max-width: 1595px;
+  width: 100%;
+  margin: auto;
 }

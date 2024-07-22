@@ -30,7 +30,13 @@ type GitHubRepoInfo = {
   updatedOn: Date;
 } | null;
 
-function ShowcaseCard({ user }: { user: User }): JSX.Element {
+function ShowcaseCard({
+  user,
+  coverPage,
+}: {
+  user: User;
+  coverPage: Boolean;
+}): JSX.Element {
   const tags = user.tags;
   const title = user.title;
 
@@ -83,8 +89,16 @@ function ShowcaseCard({ user }: { user: User }): JSX.Element {
             <ShowcaseCardPanel user={user} githubData={githubData} />
           </Panel>
         </ThemeProvider>
-        <div className={styleCSS.cardTitle}>{title}</div>
-        <div className={styleCSS.cardDescription}>{user.description}</div>
+        {coverPage ?
+          <>
+            <div className={styleCSS.cardTitleCoverPage}>{title}</div>
+            <div className={styleCSS.cardDescriptionCoverPage}>{user.description}</div>
+          </> :
+          <>
+            <div className={styleCSS.cardTitle}>{title}</div>
+            <div className={styleCSS.cardDescription}>{user.description}</div>
+          </>
+        }
         <div className={styleCSS.cardTags}>
           <ShowcaseCardTag key={title} tags={tags} cardPanel={false} />
         </div>

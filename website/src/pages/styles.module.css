@@ -3,6 +3,13 @@
  * Licensed under the MIT License.
  */
 
+.container {
+  max-width: 1595px;
+  width: 100%;
+  margin: auto;
+  background-color: #f4fafd !important;
+}
+
 .checkboxList {
   flex-wrap: wrap;
 }
@@ -52,8 +59,10 @@
 
 .showcaseList {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 24px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  place-items: center;
+  max-width: 1320px;
 }
 
 .showcaseFavorite {
@@ -90,7 +99,7 @@
 
 .filterAndCard {
   display: flex;
-  padding: 30px;
+  padding: 70px 30px;
 }
 
 .filter {

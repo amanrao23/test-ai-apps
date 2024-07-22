@@ -6,7 +6,7 @@
 import React from "react";
 import { InputValue } from "../../../pages/ShowcaseCardPage";
 import useBaseUrl from "@docusaurus/useBaseUrl";
-import { Text, Image } from "@fluentui/react-components";
+import { Text, Image, Subtitle1, Body2 } from "@fluentui/react-components";
 import styles from "./styles.module.css";
 
 export default function ShowcaseEmptyResult({ id }: { id: string }) {
@@ -15,31 +15,35 @@ export default function ShowcaseEmptyResult({ id }: { id: string }) {
       id={id}
       className={styles.emptyResultSection}
     >
-        {InputValue != null ? (
-          <>
-            <Image
-              src={useBaseUrl("/img/searchQuestionmark.svg")}
-              alt="searchQuestionmark"
-              height={128}
-              width={128}
-            />
-            <Text size={500} weight="bold" align="center">
+      {InputValue != null ? (
+        <>
+          <Image
+            src={useBaseUrl("/img/searchQuestionmark.svg")}
+            alt="searchQuestionmark"
+            height={128}
+            width={128}
+          />
+          <div className={styles.resultSection}>
+            <Subtitle1>
               We couldn’t find any results for '{InputValue}'
-            </Text>
-            <Text size={400} align="center">
+            </Subtitle1>
+            <Body2>
               Check for spelling or try searching for another term.
-            </Text>
-          </>
-        ) : (
-          <>
-            <Text size={500} weight="bold" align="center">
+            </Body2>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className={styles.resultSection}>
+            <Subtitle1>
               We couldn’t find any results.
-            </Text>
-            <Text size={400} align="center">
+            </Subtitle1>
+            <Body2>
               Check for tags or try filtering for another tag.
-            </Text>
-          </>
-        )}
+            </Body2>
+          </div>
+        </>
+      )}
     </div>
   );
 }

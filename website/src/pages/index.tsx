@@ -9,8 +9,8 @@ import ShowcaseLeftFilters from "../components/gallery/ShowcaseLeftFilters";
 import ShowcaseCoverPage from "../components/gallery/ShowcaseCoverPage";
 import ShowcaseCardPage, { UserState } from "./ShowcaseCardPage";
 import {
-  teamsLightTheme,
   FluentProvider,
+  webLightTheme,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
@@ -61,7 +61,10 @@ const App = () => {
 
 
   return !loading ? (
-    <FluentProvider theme={teamsLightTheme}>
+    <FluentProvider
+      theme={webLightTheme}
+      className={styles.container}
+    >
       <ShowcaseCoverPage />
       <div className={styles.filterAndCard}>
         <div className={styles.filter}>

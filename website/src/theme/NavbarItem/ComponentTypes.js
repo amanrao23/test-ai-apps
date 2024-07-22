@@ -13,7 +13,7 @@ const submitFeedbackButton = () => {
   return (
     <Button
       appearance="secondary"
-      size="medium"
+      size="extra-large"
       iconPosition="before"
       shape="rounded"
       icon={
@@ -26,8 +26,10 @@ const submitFeedbackButton = () => {
       }
       className={style.button}
       onClick={() => {
-        //TODO: add survey link
-        window.open("", "_blank");
+        window.open(
+          "https://microsoft.qualtrics.com/jfe/form/SV_enBCM8eIU5PVvh4",
+          "_blank"
+        );
       }}
     >
       Submit Feedback
