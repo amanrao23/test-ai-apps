@@ -99,6 +99,7 @@ export const Tags: { [type in TagType]: Tag } = {
     label: "Java",
     description: "Template contains Java app code",
     type: "Language",
+    icon: "./img/java.svg",
   },
   python: {
     label: "Python",
@@ -119,43 +120,49 @@ export const Tags: { [type in TagType]: Tag } = {
     description: "Template use OpenAI Dalle model",
     type: "Model",
     subType: openai,
+    url: "https://platform.openai.com/docs/models/dall-e",
   },
   gpt35turbo: {
     label: "GPT 3.5 Turbo",
     description: "Template use OpenAI GPT 3.5 Turbo model",
     type: "Model",
     subType: openai,
+    url: "https://platform.openai.com/docs/models/gpt-3-5-turbo",
   },
   gpt4turbo: {
     label: "GPT 4 Turbo",
     description: "Template use OpenAI GPT 4 Turbo model",
     type: "Model",
     subType: openai,
+    url: "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4",
   },
   gpt4: {
     label: "GPT 4",
     description: "Template use OpenAI GPT 4 model",
     type: "Model",
     subType: openai,
+    url: "https://platform.openai.com/docs/models/gpt-4-turbo-and-gpt-4",
   },
   llama: {
-    label: "Llama",
-    description: "Template use Meta Llama model",
+    label: "Code Llama",
+    description: "Template use Meta Code Llama model",
     type: "Model",
     subType: meta,
+    url: "https://llama.meta.com/docs/model-cards-and-prompt-formats/meta-code-llama",
   },
   llama2: {
     label: "Llama 2",
     description: "Template use Meta Llama 2 model",
     type: "Model",
     subType: meta,
+    url: "https://llama.meta.com/docs/model-cards-and-prompt-formats/meta-llama-2",
   },
 
   // Intelligent Solution Tags
-  agent: { 
+  agent: {
     label: "Agent",
     description: "Template implements copilot that uses agent(s)",
-    type: "Intelligent Solution",  
+    type: "Intelligent Solution",
   },
   chat: {
     label: "Interactive Chat",

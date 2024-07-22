@@ -77,12 +77,15 @@ export default function ShowcaseCardPanel({
         usage fees. Learn more about the cost of services by using the <Link href="https://azure.microsoft.com/en-us/pricing/calculator/"
           target="_blank"
           className={styles.color}>Azure Pricing Calculator</Link>.</div>
-      <div className={styles.subTitle2}>Languages</div>
-      <CardPanelTag tags={languageTags} />
-      <div className={styles.subTitle2}>Models</div>
-      <CardPanelTag tags={modelTags} />
-      <div className={styles.subTitle2}>Services</div>
-      <CardPanelTag tags={azureTags} />
+      {languageTags.length > 0 ? <><div className={styles.subTitle2}>Languages</div>
+        <CardPanelTag tags={languageTags} /> </> : null
+      }
+      {modelTags.length > 0 ? <><div className={styles.subTitle2}>Models</div>
+        <CardPanelTag tags={modelTags} /> </> : null
+      }
+      {azureTags.length > 0 ? <><div className={styles.subTitle2}>Services</div>
+        <CardPanelTag tags={azureTags} /> </> : null
+      }
       <div className={styles.buttonSection}>
         <div className={styles.divider} />
         <PrimaryButton

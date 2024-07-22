@@ -59,7 +59,7 @@
     ]
   },
   {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search (C#)",
     "description": "A sample app for ChatGPT- style experiences powered by your own data using Retrieval-Augmented Generation (RAG) pattern.",
     "preview": "coming soon",
     "website": "https://github.com/Azure-Samples",
@@ -99,7 +99,7 @@
     ]
   },
   {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search (Python)",
     "description": "A Python sample app for ChatGPT- style experiences powered by your own data using Retrieval-Augmented Generation (RAG) pattern.",
     "preview": "coming soon",
     "website": "https://github.com/Azure-Samples",
@@ -139,9 +139,9 @@
     ]
   },
   {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search (Javascript)",
     "description": "A TypeScript sample app for ChatGPT- style experiences powered by your own data using Retrieval-Augmented Generation (RAG) pattern.",
-    "website": "https://github.com/Azure-Samples",
+    "website": "https://github.com/anfibiacreativa, https://github.com/sinedied, https://github.com/manekinekko",
     "author": "Natalia Venditto, Yohan Lasorsa, Wassim Chegham",
     "source": "https://github.com/Azure-Samples/azure-search-openai-javascript",
     "tags": [
@@ -152,7 +152,7 @@
     ]
   },
   {
-    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search",
+    "title": "ChatGPT + Enterprise data with Azure OpenAI and Azure AI Search (Java)",
     "description": "A Java sample app for ChatGPT-style experiences powered by your own data using Retrieval-Augmented Generation (RAG) pattern.",
     "website": "https://github.com/Azure-Samples",
     "author": "Azure Content Team",

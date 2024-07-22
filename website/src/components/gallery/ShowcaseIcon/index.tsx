@@ -48,25 +48,16 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
               {...tagObject}
               key={key}
             >
-              {tagObject.type == "Model" ? <Button
+              <Button
                 icon={
                   <Image
-                    alt={tagObject.subType.label}
-                    src={useBaseUrl(tagObject.subType.icon)}
+                    alt={tagObject.type == "Model" ? tagObject.subType.label :tagObject.label}
+                    src={useBaseUrl(tagObject.type == "Model" ? tagObject.subType.icon : tagObject.icon)}
                     height={16}
                     width={16}
                   />
                 }
-              /> : <Button
-                icon={
-                  <Image
-                    alt={tagObject.label}
-                    src={useBaseUrl(tagObject.icon)}
-                    height={16}
-                    width={16}
-                  />
-                }
-              />}
+              />
             </Tooltip>
           );
         })}
@@ -99,25 +90,16 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
               {...tagObject}
               key={key}
             >
-              {tagObject.type == "Model" ? <Button
+              <Button
                 icon={
                   <Image
-                    alt={tagObject.subType.label}
-                    src={useBaseUrl(tagObject.subType.icon)}
+                    alt={tagObject.type == "Model" ? tagObject.subType.label : tagObject.label}
+                    src={useBaseUrl(tagObject.type == "Model" ? tagObject.subType.icon : tagObject.icon)}
                     height={16}
                     width={16}
                   />
                 }
-              /> : <Button
-                icon={
-                  <Image
-                    alt={tagObject.label}
-                    src={useBaseUrl(tagObject.icon)}
-                    height={16}
-                    width={16}
-                  />
-                }
-              />}
+              />
             </Tooltip>
           );
         })}
