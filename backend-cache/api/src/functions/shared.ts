@@ -25,8 +25,8 @@ async function getAuthToken(context: InvocationContext): Promise<string> {
     return authToken;
 }
 
-async function getTemplateList(context: InvocationContext, sourceRepo: String, authToken: String): Promise<any> {
-    const fileUrl = 'https://raw.githubusercontent.com/Azure/ai-apps/main/website/static/templates.json';
+async function getTemplateList(context: InvocationContext, sourceRepo: string, authToken: String): Promise<any> {
+    const fileUrl = sourceRepo;
     context.log(`Getting list of repos from: ${fileUrl}`);
     const response = await axios.get(fileUrl, {
         headers: {
@@ -125,7 +125,7 @@ async function uploadBlob(context: InvocationContext, repoSlug: RepoSlug | null,
     if (result.errorCode) throw Error(result.errorCode);
 };
 
-export async function syncFromRepo(context: InvocationContext, repo: string): Promise<void> {
+export async function syncFromRepo(context: InvocationContext, repo: string, manualRepos): Promise<void> {
     // Create a SecretClient instance
     const authToken = await getAuthToken(context);
     if (!authToken) {
@@ -141,6 +141,8 @@ export async function syncFromRepo(context: InvocationContext, repo: string): Pr
         context.error(`Fetching templates.json: ${error}`);
         return;
     }
+
+    templateList = templateList.push(...manualRepos);
 
     for (const template of templateList) {
         const repoSlug = getRepoSlug(context, template.source);

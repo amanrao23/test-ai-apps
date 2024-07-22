@@ -10,7 +10,7 @@ export async function dailyExportAiTemplates(myTimer: Timer, context: Invocation
     )
 };
 
-app.timer('dailyExportAiTemplates', {
-    schedule: '0 44 4 * * *',
-    handler: dailyExportAiTemplates
-});
+// app.timer('dailyExportAiTemplates', {
+//     schedule: '0 44 4 * * *',
+//     handler: dailyExportAiTemplates
+// });
