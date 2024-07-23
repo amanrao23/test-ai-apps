@@ -43,27 +43,31 @@ jobs:
       fail-fast: false
       matrix:
         repo: ${{ fromJson(needs.setup.outputs.repositories) }}
-      max-parallel: 5
+      max-parallel: 1
     name: ${{ matrix.repo }} 
     env:
+      # For azd login
       AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
       AZURE_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
       AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
       AZURE_ENV_NAME: ${{ vars.AZURE_ENV_NAME }}
       AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
+      ARM_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
+      ARM_TENANT_ID: ${{ vars.AZURE_TENANT_ID }}
+      # OIDC token is not working for Terraform, so we need to use the client secret. Figure out a way to use OIDC token.
+      ARM_CLIENT_SECRET: ${{ secrets.AZURE_CLIENT_SECRET }}
+      # For Terraform backend
+      RS_CONTAINER_NAME: ${{ vars.RS_CONTAINER_NAME }}
+      RS_RESOURCE_GROUP: ${{ vars.RS_RESOURCE_GROUP }}
+      RS_STORAGE_ACCOUNT: ${{ vars.RS_STORAGE_ACCOUNT }}
+      # template specific variables
+      AZURE_DOCUMENTINTELLIGENCE_LOCATION: ${{ vars.AZURE_DOCUMENTINTELLIGENCE_LOCATION }}
+      AZURE_OPENAI_LOCATION: ${{ vars.AZURE_OPENAI_LOCATION }}
+      MOCKED_OPENAI_API_KEY: ${{ vars.MOCKED_OPENAI_API_KEY }}
 
     steps:
       - name: Install AZD
         uses: Azure/setup-azd@v1.0.0
-
-      - name: Set up Python
-        # This is the version of the action for setting up Python, not the Python version.
-        uses: actions/setup-python@v5
-        with:
-          # Semantic version range syntax or exact version of a Python version
-          python-version: "3.x"
-          # Optional - x64 or x86 architecture, defaults to x64
-          architecture: "x64"
 
       - name: Checkout code
         uses: actions/checkout@v4
@@ -75,14 +79,30 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r .github/validator/requirements.txt
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
       - name: Clone repo
         working-directory: ${{ runner.temp }}
         run: |
           git clone ${{ matrix.repo }} template
-          if [ -d "./candidate-repo/hooks" ] && [ "$(ls -A ./candidate-repo/hooks/*.sh 2>/dev/null)" ]; then
-            chmod +x ./candidate-repo/hooks/*.sh
-          else
-            echo "No hooks directory or no .sh files found in hooks directory"
+          candidate_hooks_paths=("./template/hooks" "./template/infra/hooks" "./template/scripts")
+
+          for hooks_path in "${candidate_hooks_paths[@]}"; do
+            if [ -d "$hooks_path" ] && [ "$(ls -A $hooks_path/*.sh 2>/dev/null)" ]; then
+              chmod +x $hooks_path/*.sh
+              echo "Executable permissions set for .sh files in $hooks_path"
+            else
+              echo "No hooks directory or no .sh files found in $hooks_path"
+            fi
+          done
+
+          if [ -f "./template/package.json" ]; then
+            echo "Installing npm dependencies"
+            cd template
+            npm install
           fi
 
       - name: Run Microsoft Security DevOps Analysis
@@ -110,17 +130,17 @@ jobs:
         run: |
           topics_list=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/${{ env.REPO_NAME }}/topics | jq -r '.names | join(",")')
           echo "topics=\"$topics_list\"" >> $GITHUB_ENV
-      
+
       - name: Set environment name with job id
-        id: set_env_name
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           jobs=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id}}/attempts/${{ github.run_attempt }}/jobs)
           job_id=$(echo $jobs | jq -r '.jobs[] | select(.runner_name=="${{ runner.name }}") | .id')
-          azure_env_name="${{ vars.AZURE_ENV_NAME }}-$job_id"
-          echo "AZURE_ENV_NAME=$azure_env_name" >> $GITHUB_ENV
-
+          env_name="${{ vars.AZURE_ENV_NAME }}$job_id"
+          echo "AZURE_ENV_NAME=$env_name" >> $GITHUB_ENV
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
+      
       - name: Log in with Azure (Federated Credentials)
         if: ${{ env.AZURE_CLIENT_ID != '' }}
         run: |
@@ -129,16 +149,18 @@ jobs:
             --federated-credential-provider "github" `
             --tenant-id "$Env:AZURE_TENANT_ID"
         shell: pwsh
-
+      
       - name: Run validation
-        working-directory: ${{ runner.temp }}
-        run: python ${{ github.workspace }}/.github/validator/validator.py ./template --azdup --azddown --output ./output.log --topics ${{ env.TOPICS }} --msdoresult ${{ steps.msdo.outputs.sarifFile }} --debug
+        working-directory: ${{ runner.temp }}/template
+        run: |
+          python ${{ github.workspace }}/.github/validator/validator.py . --azdup --azddown --output ../output.log --topics ${{ env.TOPICS }} --msdoresult ${{ steps.msdo.outputs.sarifFile }} --debug
         env:
           AZURE_ENV_NAME: ${{ env.AZURE_ENV_NAME }}
-          AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
-          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
+          AZURE_LOCATION: ${{ env.AZURE_LOCATION }}
+          OPENAI_API_KEY: ${{ env.MOCKED_OPENAI_API_KEY }}
           CREATE_ROLE_FOR_USER: false
-          CREATE_IN_LOCAL: false
+          AZD_PREPDOCS_RAN: "false"
+          SERVICE_API_RESOURCE_EXISTS: "false"
           TOPICS: ${{ env.topics }}
 
       - name: Create or update issue if failed
@@ -157,7 +179,8 @@ jobs:
           else
             echo "Validation passed, close opened issue"
             if [ "null" != $issue_number ]; then
-              gh issue close $issue_number --repo $repo
+              gh issue edit $issue_number --body-file output.log --repo $repo
+              gh issue close $issue_number --repo $repo --reason "Validation passed"
             fi
           fi
         env: 
@@ -175,6 +198,7 @@ jobs:
           path: ${{ runner.temp }}/output.md
 
   merge-result:
+    if: ${{ always() }}
     needs:
       - validate-templates
       - setup

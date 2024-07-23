@@ -16,8 +16,7 @@ class FileValidtor:
         self.h2Tags = h2Tags
 
     def validate(self):
-        logging.debug(f"Checking for file {self.name} with {self.extensionList} under {
-                      self.rootFolder} in {self.folderList} with case sensitive {self.caseSensitive}..")
+        logging.debug(f"Checking for file {self.name} with {self.extensionList} under { self.rootFolder} in {self.folderList} with case sensitive {self.caseSensitive}..")
         result = False
         messages = []
         potential_name = self.name if self.extensionList[0] == "" else self.name + \
@@ -53,8 +52,7 @@ class FileValidtor:
                                         message=f"{potential_name} File", detail_messages=line_delimiter.join(submessages)))
                                 return result, line_delimiter.join(messages)
 
-        messages.append(ItemResultFormat.FAIL.format(message=f"{
-                        potential_name} File", detail_messages=f"- Error: {potential_name} file is missing."))
+        messages.append(ItemResultFormat.FAIL.format(message=f"{ potential_name} File", detail_messages=f"- Error: {potential_name} file is missing."))
         return False, line_delimiter.join(messages)
 
 
@@ -178,6 +176,7 @@ def check_for_azd_down(folder_path):
         return True, ItemResultFormat.PASS.format(message="azd down")
     except subprocess.CalledProcessError as e:
         logging.debug(f"{e.stdout}")
+        logging.debug(f"{e.stderr}")
         return False, ItemResultFormat.FAIL.format(message="azd down", detail_messages=f"Error: {e.stdout}")
     finally:
         os.chdir(original_directory)
@@ -195,6 +194,7 @@ def check_for_azd_up(folder_path):
         return True, ItemResultFormat.PASS.format(message="azd up")
     except subprocess.CalledProcessError as e:
         logging.debug(f"{e.stdout}")
+        logging.debug(f"{e.stderr}")
         return False, ItemResultFormat.FAIL.format(message="azd up", detail_messages=f"Error: {e.stdout}")
     finally:
         os.chdir(original_directory)
@@ -389,8 +389,7 @@ def check_security_requirements(repo_path, msdo_result_file):
 
 def internal_validator(repo_path, check_azd_up, check_azd_down, topics, msdo_result_file):
     if not os.path.isdir(repo_path):
-        raise Exception(f"Error: The path {
-                        repo_path} is not a valid directory.")
+        raise Exception(f"Error: The path {repo_path} is not a valid directory.")
         return
 
     final_result = True
