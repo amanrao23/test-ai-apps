@@ -17,6 +17,11 @@
   width: 100%;
 }
 
+.coverPageAreaContainer {
+  max-width: 1736px;
+  margin: 0 auto;
+}
+
 .coverPageArea {
   position: relative;
   width: 100%;
@@ -24,7 +29,7 @@
   padding: 72px 72px 96px 72px;
 }
 
-.titleSection{
+.titleSection {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -32,7 +37,7 @@
   width: 41%;
 }
 
-.subtitleSection{
+.subtitleSection {
   padding-top: 76px;
   display: flex;
   flex-direction: column;

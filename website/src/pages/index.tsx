@@ -66,29 +66,31 @@ const App = () => {
       className={styles.container}
     >
       <ShowcaseCoverPage />
-      <div className={styles.filterAndCard}>
-        <div className={styles.filter}>
-          <ShowcaseLeftFilters
-            activeTags={activeTags}
-            selectedCheckbox={selectedCheckbox}
-            setSelectedCheckbox={setSelectedCheckbox}
-            location={location}
-            setSelectedTags={setSelectedTags}
-            selectedTags={selectedTags}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
-        </div>
-        <div className={styles.card}>
-          <ShowcaseCardPage
-            setActiveTags={setActiveTags}
-            selectedTags={selectedTags}
-            location={location}
-            setSelectedTags={setSelectedTags}
-            setSelectedCheckbox={setSelectedCheckbox}
-            readSearchTags={readSearchTags}
-            replaceSearchTags={replaceSearchTags}
-          />
+      <div className={styles.filterAndCardContainer}>
+        <div className={styles.filterAndCard}>
+          <div className={styles.filter}>
+            <ShowcaseLeftFilters
+              activeTags={activeTags}
+              selectedCheckbox={selectedCheckbox}
+              setSelectedCheckbox={setSelectedCheckbox}
+              location={location}
+              setSelectedTags={setSelectedTags}
+              selectedTags={selectedTags}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </div>
+          <div className={styles.card}>
+            <ShowcaseCardPage
+              setActiveTags={setActiveTags}
+              selectedTags={selectedTags}
+              location={location}
+              setSelectedTags={setSelectedTags}
+              setSelectedCheckbox={setSelectedCheckbox}
+              readSearchTags={readSearchTags}
+              replaceSearchTags={replaceSearchTags}
+            />
+          </div>
         </div>
       </div>
     </FluentProvider>

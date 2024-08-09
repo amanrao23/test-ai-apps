@@ -30,14 +30,16 @@ export default function ShowcaseCoverPage() {
         }}
         alt=""
       />
-      <div className={styles.coverPageArea}>
-        <div className={styles.titleSection}>
-          <Display>{title}</Display>
-          <Title3>{description}</Title3>
-        </div>
-        <div className={styles.subtitleSection}>
-          <Title1>{subtitle}</Title1>
-          <ShowcaseCards filteredUsers={featuredUsers} coverPage={true} />
+      <div className={styles.coverPageAreaContainer}>
+        <div className={styles.coverPageArea}>
+          <div className={styles.titleSection}>
+            <Display>{title}</Display>
+            <Title3>{description}</Title3>
+          </div>
+          <div className={styles.subtitleSection}>
+            <Title1>{subtitle}</Title1>
+            <ShowcaseCards filteredUsers={featuredUsers} coverPage={true} />
+          </div>
         </div>
       </div>
     </div>

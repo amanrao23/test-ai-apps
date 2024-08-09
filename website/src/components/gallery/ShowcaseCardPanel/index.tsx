@@ -39,7 +39,10 @@ export default function ShowcaseCardPanel({
     <>
       <div className={styles.padding}>
         <div className={styles.divider} />
-        <div className={styles.githubUrl}>{githubURL}</div>
+        <div className={styles.githubUrl}
+          onClick={() => {
+            window.open(githubURL, '_blank');
+          }}>{githubURL}</div>
         <div className={styles.title}>{title}</div>
         <div className={styles.gitHubData}>
           <ShowcaseMultipleAuthors key={"author_" + user.title} user={user} />

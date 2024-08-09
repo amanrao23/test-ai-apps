@@ -24,27 +24,25 @@ export default function ShowcaseCards({
 
   return (
     <section>
-      <div className={styles.showcaseFavorite}>
-        <div className={styles.showcaseList}>
-          {filteredUsers.map((user, index) => (
-            <React.Fragment key={index}>
-              {((len < 6 && index === len - 1) || index === 4) && !coverPage ? (
-                <React.Fragment key="cardWithSurveyCard">
-                  <React.Fragment key={user.title}>
-                    <ShowcaseCard user={user} coverPage={coverPage} />
-                  </React.Fragment>
-                  <React.Fragment key="fragment_surveyCard">
-                    <ShowcaseSurveyCard />
-                  </React.Fragment>
-                </React.Fragment>
-              ) : (
+      <div className={styles.showcaseList}>
+        {filteredUsers.map((user, index) => (
+          <React.Fragment key={index}>
+            {((len < 6 && index === len - 1) || index === 4) && !coverPage ? (
+              <React.Fragment key="cardWithSurveyCard">
                 <React.Fragment key={user.title}>
                   <ShowcaseCard user={user} coverPage={coverPage} />
                 </React.Fragment>
-              )}
-            </React.Fragment>
-          ))}
-        </div>
+                <React.Fragment key="fragment_surveyCard">
+                  <ShowcaseSurveyCard />
+                </React.Fragment>
+              </React.Fragment>
+            ) : (
+              <React.Fragment key={user.title}>
+                <ShowcaseCard user={user} coverPage={coverPage} />
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        ))}
       </div>
     </section>
   );

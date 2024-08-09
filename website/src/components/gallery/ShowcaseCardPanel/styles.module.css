@@ -10,6 +10,7 @@
 }
 
 .githubUrl {
+  cursor: pointer;
   color: #115ea3;
   font-size: 12px;
   line-height: 16px;

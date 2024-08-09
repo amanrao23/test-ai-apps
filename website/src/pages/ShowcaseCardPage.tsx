@@ -7,12 +7,11 @@ import React, { useState, useMemo, useEffect, useCallback } from "react";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { Tags, type User, type TagType } from "../data/tags";
 import { sortedUsers, unsortedUsers } from "../data/users";
-import { Text, Combobox, Option, Spinner, Badge, Body1 } from "@fluentui/react-components";
+import { Text, Option, Spinner, Badge, Body1, Dropdown } from "@fluentui/react-components";
 import { SearchBox } from '@fluentui/react-search';
 import ShowcaseCards from "./ShowcaseCards";
 import styles from "./styles.module.css";
 import { toggleListItem } from "@site/src/utils/jsUtils";
-import useBaseUrl from "@docusaurus/useBaseUrl";
 import { prepareUserState } from "@site/src/pages/index";
 import { Dismiss20Filled } from "@fluentui/react-icons";
 
@@ -271,9 +270,9 @@ export default function ShowcaseCardPage({
       <div>
         <div className={styles.searchAndSortBarSection}>
           <FilterBar data-m={contentForAdobeAnalytics} />
-          <Combobox
+          <Dropdown
             className={styles.sortBar}
-            aria-labelledby="combo-default"
+            aria-labelledby="dropdown-default"
             appearance="outline"
             size="large"
             placeholder={SORT_BY_OPTIONS[2]}
@@ -282,7 +281,7 @@ export default function ShowcaseCardPage({
             {SORT_BY_OPTIONS.map((option) => (
               <Option key={option}>{option}</Option>
             ))}
-          </Combobox>
+          </Dropdown>
         </div>
         <div className={styles.templateResultsNumber}>
           <Text size={400}>Showing</Text>
