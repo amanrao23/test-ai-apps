@@ -16,7 +16,14 @@
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
   --ifm-navbar-link-color: #242424;
-  --ifm-footer-background-color: #FFFFFF;
+  --ifm-footer-background-color: #ffffff;
+  --ifm-color-text-ai-site: #242424;
+}
+
+[data-theme="dark"] {
+  --ifm-navbar-link-color: #ffffff;
+  --ifm-footer-background-color: #292929;
+  --ifm-color-text-ai-site: #ffffff;
 }
 
 /* For readability - FIXME: is there a better way to handle it? */
@@ -31,4 +38,8 @@
   max-width: 1736px;
   width: 100%;
   margin: auto;
+}
+
+.navbar .navbar__inner .navbar__items {
+  gap: 16px;
 }

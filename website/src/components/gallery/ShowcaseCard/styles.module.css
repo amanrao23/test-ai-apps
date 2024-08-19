@@ -44,6 +44,14 @@
   color: #424242;
 }
 
+[data-theme="dark"] .cardDescription {
+  color: #d6d6d6;
+}
+
+[data-theme="dark"] .cardDescriptionCoverPage {
+  color: #d6d6d6;
+}
+
 .cardDescriptionCoverPage {
   overflow: hidden;
   display: -webkit-box;
@@ -82,4 +90,12 @@
 
 .starNumber {
   color: #707070;
+}
+
+[data-theme="dark"] .forkNumber {
+  color: #999999;
+}
+
+[data-theme="dark"] .starNumber {
+  color: #999999;
 }

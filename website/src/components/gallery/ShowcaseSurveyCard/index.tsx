@@ -62,11 +62,9 @@ export default function ShowcaseSurveyCard(): React.ReactElement {
       <CardFooter>
         <Button
           appearance="primary"
-          className={styles.surveyButton}
           onClick={() => {
             window.open(
-              // TODO: update survey link
-              "",
+              "https://microsoft.qualtrics.com/jfe/form/SV_enBCM8eIU5PVvh4",
               "_blank"
             );
           }}

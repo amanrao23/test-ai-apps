@@ -11,3 +11,7 @@
   font-weight: 400 !important;
   line-height: 16px !important;
 }
+
+[data-theme="dark"] .toolTip {
+  color: #D6D6D6 !important;
+}

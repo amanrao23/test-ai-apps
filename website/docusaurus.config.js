@@ -62,8 +62,8 @@ const config = {
       //    See:
       colorMode: {
         defaultMode: "light",
-        disableSwitch: true,
-        respectPrefersColorScheme: false,
+        disableSwitch: false,
+        respectPrefersColorScheme: true,
       },
 
       // CONFIG: navbar logo, items, style, stickiness

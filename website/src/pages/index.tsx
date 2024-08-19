@@ -11,10 +11,11 @@ import ShowcaseCardPage, { UserState } from "./ShowcaseCardPage";
 import {
   FluentProvider,
   webLightTheme,
+  webDarkTheme,
 } from "@fluentui/react-components";
 import { initializeIcons } from "@fluentui/react/lib/Icons";
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
-
+import { useColorMode } from "@docusaurus/theme-common";
 import styles from "./styles.module.css";
 import { type TagType } from "@site/src/data/tags";
 import { TagList } from "@site/src/data/users";
@@ -45,6 +46,7 @@ const replaceSearchTags = (search: string, newTags: TagType[]) => {
 };
 
 const App = () => {
+  const { colorMode } = useColorMode();
   const [loading, setLoading] = useState(true);
   const [selectedCheckbox, setSelectedCheckbox] = useState<TagType[]>([]);
   const [selectedTags, setSelectedTags] = useState<TagType[]>([]);
@@ -62,7 +64,7 @@ const App = () => {
 
   return !loading ? (
     <FluentProvider
-      theme={webLightTheme}
+      theme={colorMode == "dark" ? webDarkTheme : webLightTheme}
       className={styles.container}
     >
       <ShowcaseCoverPage />

@@ -71,13 +71,11 @@ function readSearchName(search: string) {
 function FilterAppliedBar({
   clearAll,
   selectedTags,
-  setSelectedTags,
   readSearchTags,
   replaceSearchTags,
 }: {
   clearAll;
   selectedTags: TagType[];
-  setSelectedTags: React.Dispatch<React.SetStateAction<TagType[]>>;
   readSearchTags: (search: string) => TagType[];
   replaceSearchTags: (search: string, newTags: TagType[]) => string;
 }) {
@@ -111,7 +109,6 @@ function FilterAppliedBar({
             shape="circular"
             icon={<Dismiss20Filled />}
             iconPosition="after"
-            className={styles.filterBadge}
             onClick={() => {
               toggleTag(tag, location);
             }}

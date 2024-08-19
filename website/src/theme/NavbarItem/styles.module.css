@@ -19,5 +19,16 @@
 }
 
 .button:hover {
-background-color: #f5f5f5 !important;
+  background-color: #f5f5f5 !important;
 }
+
+[data-theme="dark"] .button {
+  border: 1px solid #666666 !important;
+  background: #292929 !important;
+  color: #FFFFFF !important;
+}
+
+[data-theme="dark"] .button:hover {
+  background-color: #3d3d3d !important;
+}
+

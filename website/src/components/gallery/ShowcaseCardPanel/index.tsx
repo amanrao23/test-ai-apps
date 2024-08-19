@@ -12,6 +12,7 @@ import useBaseUrl from "@docusaurus/useBaseUrl";
 import { Image, Link, MessageBar, MessageBarType, PrimaryButton } from "@fluentui/react";
 import ShowcaseMultipleAuthors from "../ShowcaseMultipleAuthors/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
+import { useColorMode } from "@docusaurus/theme-common";
 
 export default function ShowcaseCardPanel({
   user,
@@ -120,6 +121,7 @@ const GitHubInfoCardPanel = ({ githubData }) => {
     }).format(new Date(date));
   };
   if (!githubData) return githubData;
+  const { colorMode } = useColorMode();
 
   return (
     <>
@@ -136,7 +138,7 @@ const GitHubInfoCardPanel = ({ githubData }) => {
           <div className={styles.info}>•</div>
           <Image
             alt="fork"
-            src={useBaseUrl("/img/fork.svg")}
+            src={colorMode == "dark" ? useBaseUrl("/img/forkDark.svg") : useBaseUrl("/img/fork.svg")}
             height={16}
             width={16}
           />
@@ -148,7 +150,7 @@ const GitHubInfoCardPanel = ({ githubData }) => {
           <div className={styles.info}>•</div>
           <Image
             alt="star"
-            src={useBaseUrl("/img/star.svg")}
+            src={colorMode == "dark" ? useBaseUrl("/img/starDark.svg") : useBaseUrl("/img/star.svg")}
             height={16}
             width={16}
           />
@@ -160,6 +162,7 @@ const GitHubInfoCardPanel = ({ githubData }) => {
 };
 
 function CardPanelTag({ tags }: { tags: Tag[] }) {
+  const { colorMode } = useColorMode();
   return (
     <>
       {tags.map((item, index) => {
@@ -180,7 +183,13 @@ function CardPanelTag({ tags }: { tags: Tag[] }) {
             key={label}
             className={styles.cardPanelTag}
           >
-            {subType ? <div className={styles.icon}><img src={useBaseUrl(item.subType.icon)} alt={label} height={20} /></div> : <div className={styles.icon}><img src={useBaseUrl(item.icon)} alt={label} height={20} /></div>}
+            {subType ? <div className={styles.icon}>
+              <img
+                src={colorMode == "dark" && item.subType.darkIcon ? useBaseUrl(item.subType.darkIcon) : useBaseUrl(item.subType.icon)}
+                alt={label}
+                height={20} />
+            </div> :
+              <div className={styles.icon}><img src={useBaseUrl(item.icon)} alt={label} height={20} /></div>}
             <div className={styles.iconTextGroup}>
               <div className={styles.iconText}>
                 {label}

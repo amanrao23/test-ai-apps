@@ -8,3 +8,7 @@
 .color {
   color: #707070;
 }
+
+[data-theme="dark"] .color {
+  color: #999999;
+}

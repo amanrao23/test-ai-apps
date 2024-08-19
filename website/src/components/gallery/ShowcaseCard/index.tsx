@@ -17,12 +17,14 @@ import {
   Panel,
   PanelType,
   ThemeProvider,
+  PartialTheme,
 } from "@fluentui/react";
 import ShowcaseCardPanel from "../ShowcaseCardPanel/index";
 import ShowcaseCardTag from "../ShowcaseTag/index";
 import ShowcaseCardIcon from "../ShowcaseIcon/index";
 import { useEffect, useState } from "react";
 import useBaseUrl from "@docusaurus/useBaseUrl";
+import { useColorMode } from "@docusaurus/theme-common";
 
 type GitHubRepoInfo = {
   forks: number;
@@ -49,6 +51,21 @@ function ShowcaseCard({
 
   const initialGitHubData: GitHubRepoInfo = null;
   const [githubData, setGithubData] = useState(initialGitHubData);
+
+  const { colorMode } = useColorMode();
+  const lightTheme: PartialTheme = {
+    semanticColors: {
+      bodyBackground: "#ffffff",
+      bodyText: "#292929",
+    },
+  };
+
+  const darkTheme: PartialTheme = {
+    semanticColors: {
+      bodyBackground: "#292929",
+      bodyText: "ffffff",
+    },
+  };
 
   useEffect(() => {
     const repoSlug = user.source
@@ -78,7 +95,8 @@ function ShowcaseCard({
       data-m={contentForAdobeAnalytics}
     >
       <div>
-        <ThemeProvider>
+        {/* Panel is Fluent UI 8. Must use ThemeProvider */}
+        <ThemeProvider theme={colorMode != "dark" ? lightTheme : darkTheme}>
           <Panel
             isLightDismiss
             isOpen={isOpen}
@@ -121,6 +139,7 @@ const GitHubInfo = ({ githubData }) => {
     }).format(number);
   };
   if (!githubData) return githubData;
+  const { colorMode } = useColorMode();
 
   return (
     <div className={styleCSS.gitHubData}>
@@ -128,7 +147,7 @@ const GitHubInfo = ({ githubData }) => {
         <>
           <Image
             alt="fork"
-            src={useBaseUrl("/img/fork.svg")}
+            src={colorMode == "dark" ? useBaseUrl("/img/forkDark.svg") : useBaseUrl("/img/fork.svg")}
             height={16}
             width={16}
           />
@@ -141,7 +160,7 @@ const GitHubInfo = ({ githubData }) => {
         <>
           <Image
             alt="star"
-            src={useBaseUrl("/img/star.svg")}
+            src={colorMode == "dark" ? useBaseUrl("/img/starDark.svg") : useBaseUrl("/img/star.svg")}
             height={16}
             width={16}
           />

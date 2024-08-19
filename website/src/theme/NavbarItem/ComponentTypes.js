@@ -8,8 +8,10 @@ import React from "react";
 import { Button, Image } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import style from "./styles.module.css";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const submitFeedbackButton = () => {
+  const { colorMode } = useColorMode();
   return (
     <Button
       appearance="secondary"
@@ -19,7 +21,7 @@ const submitFeedbackButton = () => {
       icon={
         <Image
           alt="feedback"
-          src={useBaseUrl("/img/personFeedback.svg")}
+          src={colorMode =="dark" ? useBaseUrl("/img/personFeedbackdDark.svg") : useBaseUrl("/img/personFeedback.svg")}
           height={20}
           width={20}
         />

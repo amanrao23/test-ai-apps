@@ -18,8 +18,12 @@
   padding-bottom: 4px;
 }
 
+[data-theme="dark"] .githubUrl {
+  color: #479ef5;
+}
+
 .title {
-  color: #242424;
+  color: var(--ifm-color-text-ai-site);
   font-size: 20px;
   font-weight: 600;
   line-height: 28px;
@@ -33,6 +37,10 @@
   flex-wrap: wrap;
   color: #707070;
   font-size: 14px;
+}
+
+[data-theme="dark"] .gitHubData {
+  color: #999999;
 }
 
 .author {
@@ -49,7 +57,7 @@
 
 .subTitle {
   padding: 12px 0;
-  color: #242424;
+  color: var(--ifm-color-text-ai-site);
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
@@ -57,7 +65,7 @@
 
 .subTitle2 {
   padding-top: 12px;
-  color: #242424;
+  color: var(--ifm-color-text-ai-site);
   font-size: 16px;
   font-weight: 600;
   line-height: 22px;
@@ -65,7 +73,7 @@
 
 .text {
   padding-bottom: 12px;
-  color: #242424;
+  color: var(--ifm-color-text-ai-site);
   font-size: 14px;
   font-weight: 400;
   line-height: 20px;
@@ -86,6 +94,10 @@
   color: #115ea3;
 }
 
+[data-theme="dark"] .color {
+  color: #479ef5;
+}
+
 .cardPanelTag {
   display: flex;
   padding-top: 8px;
@@ -104,8 +116,14 @@
   background: #ffffff;
 }
 
+[data-theme="dark"] .icon {
+  border: 1px solid #666666;
+  background: #292929;
+}
+
+
 .iconText {
-  color: #242424;
+  color: var(--ifm-color-text-ai-site);
   font-size: 14px;
   font-weight: 600;
   line-height: 20px;
@@ -128,8 +146,16 @@
   line-height: 16px;
 }
 
+[data-theme="dark"] .iconLearnMoreGroup {
+  color: #adadad;
+}
+
 .iconLink {
   color: #0f6cbd;
+}
+
+[data-theme="dark"] .iconLink {
+  color: #479ef5;
 }
 
 .buttonSection {
@@ -139,6 +165,18 @@
 
 .button {
   border-radius: 4px;
+  background: #0f6cbd;
+}
+
+.button:hover {
+  background: #115ea3;
+}
+
+[data-theme="dark"] .button {
+  background: #115ea3;
+}
+
+[data-theme="dark"] .button:hover {
   background: #0f6cbd;
 }
 
@@ -154,4 +192,8 @@
   padding-bottom: 16px;
   margin-left: -100%;
   margin-right: -4%;
+}
+
+[data-theme="dark"] .divider {
+  border-top: 1px solid #525252;
 }

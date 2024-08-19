@@ -13,6 +13,7 @@ import styles from "./styles.module.css";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { featuredUsers } from "../../../data/users";
 import ShowcaseCards from "../../../pages/ShowcaseCards";
+import { useColorMode } from "@docusaurus/theme-common";
 
 const title = "Build with AI";
 const description =
@@ -20,10 +21,11 @@ const description =
 const subtitle = "Featured AI templates";
 
 export default function ShowcaseCoverPage() {
+  const { colorMode } = useColorMode();
   return (
     <div className={styles.coverPageContainer}>
       <img
-        src={useBaseUrl("/img/coverBackground.png")}
+        src={colorMode == "dark" ? useBaseUrl("/img/coverBackgroundDark.png") : useBaseUrl("/img/coverBackground.png")}
         className={styles.cover}
         onError={({ currentTarget }) => {
           currentTarget.style.display = "none";

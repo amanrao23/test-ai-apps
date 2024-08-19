@@ -11,6 +11,7 @@ import { sortBy } from "@site/src/utils/jsUtils";
 import { Tooltip, Image, Button } from "@fluentui/react-components";
 import useBaseUrl from "@docusaurus/useBaseUrl";
 import { openai, meta, microsoft, mistralai } from "../../../data/tags";
+import { useColorMode } from "@docusaurus/theme-common";
 
 export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
   const tagObjects = tags
@@ -39,6 +40,8 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
     .map((tagObject) => tagObject.label)
     .join("\n");
 
+  const { colorMode } = useColorMode();
+
   if (length > number && rest > 1) {
     return (
       <>
@@ -55,8 +58,8 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
               <Button
                 icon={
                   <Image
-                    alt={tagObject.type == "Model" ? tagObject.subType.label :tagObject.label}
-                    src={useBaseUrl(tagObject.type == "Model" ? tagObject.subType.icon : tagObject.icon)}
+                    alt={tagObject.type == "Model" ? tagObject.subType.label : tagObject.label}
+                    src={useBaseUrl(tagObject.type == "Model" ? colorMode == "dark" && tagObject.subType.darkIcon ? tagObject.subType.darkIcon : tagObject.subType.icon : tagObject.icon)}
                     height={16}
                     width={16}
                   />
@@ -98,7 +101,7 @@ export default function ShowcaseCardIcon({ tags }: { tags: TagType[] }) {
                 icon={
                   <Image
                     alt={tagObject.type == "Model" ? tagObject.subType.label : tagObject.label}
-                    src={useBaseUrl(tagObject.type == "Model" ? tagObject.subType.icon : tagObject.icon)}
+                    src={useBaseUrl(tagObject.type == "Model" ? colorMode == "dark" && tagObject.subType.darkIcon ? tagObject.subType.darkIcon : tagObject.subType.icon : tagObject.icon)}
                     height={16}
                     width={16}
                   />
