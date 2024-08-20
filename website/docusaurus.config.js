@@ -98,6 +98,10 @@ const config = {
             to: "https://learn.microsoft.com/azure/developer/azure-developer-cli/reference",
           },
           {
+            label: "Terms of Use",
+            to: "https://www.microsoft.com/legal/terms-of-use",
+          },
+          {
             label: "Privacy Statement",
             to: "https://privacy.microsoft.com/privacystatement",
           },
