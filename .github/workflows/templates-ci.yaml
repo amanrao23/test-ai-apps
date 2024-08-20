@@ -7,13 +7,12 @@ on:
     paths:
       - 'website/static/templates.json'
 
-permissions:
-  contents: read
-  id-token: write
-  pull-requests: write
-
 jobs:
   validation:
+    permissions:
+      contents: read
+      id-token: write
+      pull-requests: write
     runs-on: ubuntu-latest
     env:
       AZURE_CLIENT_ID: ${{ vars.AZURE_CLIENT_ID }}
@@ -32,7 +31,6 @@ jobs:
       - name: Install python dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r .github/validator/requirements.txt
 
       - name: Parse PR comment
         id: parse_pr_commentbody
@@ -51,68 +49,17 @@ jobs:
       - name: Print parse_pr_commentbody
         run: echo ${{ steps.parse_pr_commentbody.outputs.extracted_link }}
 
-      - name: Extract topics and validate
-        id: extract_repo_info
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          extracted_link="${{ steps.parse_pr_commentbody.outputs.extracted_link }}"
-          repo_info=$(echo $extracted_link | sed 's|https://github.com/||')
-          topics_list=$(gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" repos/$repo_info/topics | jq -r '.names | join(",")')
-          echo "topics=\"$topics_list\"" >> $GITHUB_ENV
-
-      - name: Clone the target repo and prepare for validation
-        run: |
-          cd ..
-          git clone ${{ steps.parse_pr_commentbody.outputs.extracted_link }} candidate-repo
-          if [ -d "./candidate-repo/hooks" ] && [ "$(ls -A ./candidate-repo/hooks/*.sh 2>/dev/null)" ]; then
-            chmod +x ./candidate-repo/hooks/*.sh
-          else
-            echo "No hooks directory or no .sh files found in hooks directory"
-          fi
-
-      - name: Run Microsoft Security DevOps Analysis
-        uses: microsoft/security-devops-action@v1
-        id: msdo
+      - id: validation
+        uses: microsoft/template-validation-action@main
         with:
-          tools: templateanalyzer
-        env:
-          GDN_TEMPLATEANALYZER_ANALYZEDIRECTORY: ./../candidate-repo/
-
-      - name: Set environment name with timestamp
-        id: set_env_name
-        run: |
-          current_time=$(date +%m%d%H%M)
-          azure_env_name="${{ vars.AZURE_ENV_NAME }}-$current_time"
-          echo "AZURE_ENV_NAME=$azure_env_name" >> $GITHUB_ENV
-
-      - name: Log in with Azure (Federated Credentials)
-        if: ${{ env.AZURE_CLIENT_ID != '' }}
-        run: |
-          azd auth login `
-            --client-id "$Env:AZURE_CLIENT_ID" `
-            --federated-credential-provider "github" `
-            --tenant-id "$Env:AZURE_TENANT_ID"
-        shell: pwsh
-
-      - name: Run validation
-        run: |
-          cd ./../candidate-repo/
-          python ./../ai-apps/.github/validator/validator.py . --azdup --azddown --output ./../ai-apps/.github/validator/output.log --topics ${{ env.TOPICS }} --msdoresult ${{ steps.msdo.outputs.sarifFile }} --debug
-        env:
-          AZURE_ENV_NAME: ${{ env.AZURE_ENV_NAME }}
-          AZURE_LOCATION: ${{ vars.AZURE_LOCATION }}
-          AZURE_SUBSCRIPTION_ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}
-          CREATE_ROLE_FOR_USER: false
-          GITHUB_ACTIONS: true
-          AZURE_PRINCIPAL_TYPE: "ServicePrincipal"
-          TOPICS: ${{ env.topics }}
+          repositoryURL: ${{ steps.parse_pr_commentbody.outputs.extracted_link }}
+          branch: main
 
       - name: Read file content
         if: always()
         id: read_validation_result
         run: |
-          FILE_CONTENT=$(cat .github/validator/output.log)
+          FILE_CONTENT=$(cat {{ steps.validation.outputs.resultFile }})
           echo "validation_result<<EOF" >> $GITHUB_ENV
           echo "$FILE_CONTENT" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
