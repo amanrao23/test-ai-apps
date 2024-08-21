@@ -12,7 +12,6 @@
       "gpt35turbo",
       "gpt4",
       "agent",
-      "featured",
       "managedidentity",
       "monitor",
       "aks",
@@ -45,7 +44,6 @@
     "source": "https://github.com/Azure-Samples/agent-openai-python-prompty-langchain-pinecone",
     "tags":[
       "python",
-      "featured",
       "gpt35turbo",
       "search",
       "pinecone",
@@ -63,7 +61,6 @@
     "source": "https://github.com/Azure-Samples/assistant-data-openai-python-promptflow",
     "tags":[
       "python",
-      "featured",
       "gpt35turbo",
       "gpt4",
       "agent",
@@ -133,6 +130,7 @@
     "author": "Azure Content Team",
     "source": "https://github.com/Azure-Samples/azure-search-openai-demo",
     "tags": [
+      "featured",
       "python",
       "typescript",
       "gpt35turbo",
@@ -352,14 +350,30 @@
   {
     "title": "Pinecone Canopy",
     "description": "An open-source Retrieval Augmented Generation (RAG) framework and context engine built on top of the Pinecone vector database.",
-    "website": "",
-    "author": "coming soon",
+    "website": "https://github.com/cwaddingham",
+    "author": "Cory Waddingham",
     "source": "https://github.com/cwaddingham/canopy/tree/create-azd-template",
     "tags": [
+      "featured",
       "python",
       "chat",
       "pinecone",
       "aca"
+    ]
+  },
+  {
+    "title": "Chat + Vision using Azure OpenAI (Python)",
+    "description": "A demonstration of chatting with uploaded images using OpenAI vision models like gpt-4o.",
+    "website": "https://github.com/Azure-Samples",
+    "author": "Azure Content Team",
+    "source": "https://github.com/Azure-Samples/openai-chat-vision-quickstart",
+    "tags": [
+      "featured",
+      "python",
+      "chat",
+      "managedidentity",
+      "aca",
+      "azureai"
     ]
   }
 ]

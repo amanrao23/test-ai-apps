@@ -84,9 +84,7 @@ export type TagType =
   | "embedding-ada"
   | "bicep"
   | "terraform"
-  | "mongodb"
   | "prometheus"
-  | "pinecone"
   | "appinsights"
   | "loganalytics"
   | "appservice"
@@ -96,8 +94,6 @@ export type TagType =
   | "cosmosdb"
   | "functions"
   | "blobstorage"
-  | "azuresql"
-  | "azuredb-postgreSQL"
   | "azuredb-mySQL"
   | "swa"
   | "servicebus"
@@ -399,6 +395,13 @@ export const Tags: { [type in TagType]: Tag } = {
     icon: "./img/Azure-Storage.svg",
     url: "https://azure.microsoft.com/products/storage/blobs",
     type: "Service",
+  },
+  "azuredb-mySQL": {
+    label: "Azure MySQL",
+    description: "Template architecture uses Azure Database for MySQL",
+    azureIcon: "./img/Azure-MySQL.svg",
+    url: "https://azure.microsoft.com/products/mysql",
+    type: "Database",
   },
   swa: {
     label: "Azure Static Web Apps",
