@@ -32,6 +32,7 @@ jobs:
   validate-templates:
     permissions:
       contents: read
+      actions: read
       id-token: write
     if: ${{ needs.setup.outputs.repositories }}
     needs: setup
@@ -41,7 +42,7 @@ jobs:
       fail-fast: false
       matrix:
         repo: ${{ fromJson(needs.setup.outputs.repositories) }}
-      max-parallel: 1
+      max-parallel: 2
     name: ${{ matrix.repo }} 
     env:
       CI: "true"
@@ -99,8 +100,6 @@ jobs:
           job_id=$(echo $jobs | jq -r '.jobs[] | select(.runner_name=="${{ runner.name }}") | .id')
           env_name="${{ vars.AZURE_ENV_NAME }}$job_id"
           echo "AZURE_ENV_NAME=$env_name" >> $GITHUB_ENV
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
       # TODO: Refine the logic to pick location based on scenario rather than repo name
@@ -109,6 +108,8 @@ jobs:
         run: |
           if [[ "${{ steps.extract_repo_name.outputs.REPO_NAME }}" == "Azure-Samples/agent-openai-python-prompty" ]]; then
             echo "AZURE_LOCATION=${{ vars.AZURE_GPT4O_LOCATION }}" >> $GITHUB_ENV
+          elif [[ "${{ steps.extract_repo_name.outputs.REPO_NAME }}" == "Azure-Samples/rag-postgres-openai-python" ]]; then
+            echo "AZURE_LOCATION=${{ vars.AZURE_POSTGRES_LOCATION }}" >> $GITHUB_ENV
           elif [[ "${{ steps.extract_repo_name.outputs.REPO_NAME }}" == "Azure-Samples/assistant-data-openai-python-promptflow" ]]; then
             echo "AZURE_LOCATION=${{ vars.AZURE_OPENAI_TURBO_LOCATION }}" >> $GITHUB_ENV
           else
@@ -122,10 +123,20 @@ jobs:
             echo "MOCKED_OPENAI_API_KEY=sample-key" >> $GITHUB_ENV
           fi
 
+      - name: Skip azd up for terraform template
+        id: check_terraform
+        run: |
+          if [[ -f "${{ runner.temp }}/template/infra/main.tf" ]]; then
+            echo "RUN_AZD_UP=false" >> $GITHUB_OUTPUT
+          else
+            echo "RUN_AZD_UP=true" >> $GITHUB_OUTPUT
+          fi
+
       - id: validation
         uses: microsoft/template-validation-action@main
         with:
           workingDirectory: ${{ runner.temp }}/template
+          runAzdUp: ${{ steps.check_terraform.outputs.RUN_AZD_UP }}
         env:
           REPOSITORY_NAME: ${{ steps.extract_repo_name.outputs.REPO_NAME }}
           AZURE_LOCATION: ${{ env.AZURE_LOCATION }}
